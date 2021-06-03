@@ -74,7 +74,6 @@ This is the backend for the Flask React project.
    ```bash
    heroku login
    ```
-
 5. Login to the heroku container registry
 
    ```bash
