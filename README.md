@@ -17,3 +17,6 @@ So ask yourself, are you financially healthy? 💳
 * Accounts
 * Transactions
 * Categories
+
+### Technologies
+-
