@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+body{
+  font-family: 'Quicksand', sans-serif;
+}
+
+::placeholder{
+  font-family: 'Quicksand', sans-serif;
+  padding-left: 25px;
+}
+
+button{
+  background: white;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 150px;
+  height: 40px;
+  color: rgb(67, 116, 116);
+}
+
+.errors{
+  padding: 10px;
+  color: rgb(109, 34, 34);
+}
+
+.main-heading{
+  font-size:40px;
+  font-weight: 1000;
+  padding-top: 1em;
+}
+
+.secondary-heading{
+  font-size:35px;
+  font-weight: 500;
+}

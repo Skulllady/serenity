@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
+import Footer from '../src/components/Footer';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -42,6 +43,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} >
           <NavBar />
+          <Footer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

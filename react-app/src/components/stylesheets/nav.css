@@ -1,0 +1,21 @@
+.auth-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  background-color:rgb(255, 255, 255);
+  padding-right: 60px;
+  border-bottom: rgb(64, 195, 195) solid 1px;
+  height: 7em;
+}
+
+.nav-items{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.auth-options{
+  padding-left: 20px;
+}
