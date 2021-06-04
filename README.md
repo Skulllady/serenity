@@ -1,5 +1,5 @@
 # Welcome to Serenity!
-![Serenity Logo](https://github.com/Skulllady/serenity/blob/main/react-app/public/logo/logo_transparent.png)
+![Serenity Logo](https://github.com/Skulllady/serenity/blob/main/react-app/src/images/logo/logo_transparent.png)
 
 Serenity is a personal finance app that focuses on financial literacy.
 
