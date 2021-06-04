@@ -3,9 +3,15 @@ from app.models import db, Account
 # Adds a demo user, you can add other users here if you want
 def seed_accounts():
 
-    a1 = Account(account_number="555456321", account_name="John F. Smith", account_type="Checking Account",institution="Bank Of America",balance=456,user_id=1)
+    a1 = Account(account_number="225456321", account_name="John F. Smith", account_type="Checking Account",institution="Commonwealth Bank",balance=456,user_id=1)
+    a2 = Account(account_number="335456322", account_name="John F. Smith", account_type="Savings Account",institution="Westpac Bank",balance=5000,user_id=1)
+    a3 = Account(account_number="445456323", account_name="John F. Smith", account_type="Loan Account",institution="Bendigo Bank",balance=850,user_id=1)
+    a4 = Account(account_number="555456324", account_name="John F. Smith", account_type="Investment Account",institution="National Australian Bank",balance=2500,user_id=1)
 
     db.session.add(a1)
+    db.session.add(a2)
+    db.session.add(a3)
+    db.session.add(a4)
 
     db.session.commit()
 

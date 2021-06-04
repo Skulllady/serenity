@@ -5,7 +5,7 @@ class Transaction(db.Model):
   __tablename__ = 'transactions'
 
   id = db.Column(db.Integer, primary_key = True)
-  date = db.Column(db.Integer, nullable = False, unique = True)
+  date = db.Column(db.Integer, nullable = False)
   transaction = db.Column(db.String(255), nullable = False)
   amount = db.Column(db.Numeric, nullable = False)
   account_id = db.Column(db.Integer, db.ForeignKey("accounts.id"), nullable = False,)
