@@ -20,3 +20,6 @@ So ask yourself, are you financially healthy? 💳
 
 ### Technologies
 -
+
+### Special Thanks
+- Calm FishingBoat Video by Kristian Aleksandrov from Pexels

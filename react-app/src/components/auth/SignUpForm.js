@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import AuthNav from './AuthNav';
-import Footer from '../Footer';
+import Splash from '../Splash';
 import "../stylesheets/index.css";
 import "../stylesheets/nav.css";
 import "../stylesheets/form.css";
@@ -45,58 +44,58 @@ const SignUpForm = () => {
 
   return (
     <>
-      <AuthNav />
-      <div className="form-container">
-        <div className="main-heading">Welcome to Serenity</div>
-        <div className="secondary-heading">Sign Up</div>
-        <form onSubmit={onSignUp}>
-          <div className="form-row">
-            <label>User Name</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="enter username"
-              onChange={updateUsername}
-              value={username}
-            ></input>
-          </div>
-          <div className="form-row">
-            <label>Email</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="email"
-              onChange={updateEmail}
-              value={email}
-            ></input>
-          </div>
-          <div className="form-row">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="enter password"
-              onChange={updatePassword}
-              value={password}
-            ></input>
-          </div>
-          <div className="form-row">
-            <label>Re-Enter Password</label>
-            <input
-              type="password"
-              name="repeat_password"
-              placeholder="re-enter password"
-              onChange={updateRepeatPassword}
-              value={repeatPassword}
-              required={true}
-            ></input>
-          </div>
-          <div className="form-row">
-            <button type="submit">Sign Up</button>
-          </div>
-        </form>
-      </div>
-      <Footer />
+      <Splash>
+        <div className="form-container">
+          <div className="main-heading">Welcome to Serenity</div>
+          <div className="secondary-heading">Sign Up</div>
+          <form onSubmit={onSignUp}>
+            <div className="form-row">
+              <label>User Name</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="enter username"
+                onChange={updateUsername}
+                value={username}
+              ></input>
+            </div>
+            <div className="form-row">
+              <label>Email</label>
+              <input
+                type="text"
+                name="email"
+                placeholder="enter email"
+                onChange={updateEmail}
+                value={email}
+              ></input>
+            </div>
+            <div className="form-row">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="enter password"
+                onChange={updatePassword}
+                value={password}
+              ></input>
+            </div>
+            <div className="form-row">
+              <label>Re-Enter Password</label>
+              <input
+                type="password"
+                name="repeat_password"
+                placeholder="re-enter password"
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+              ></input>
+            </div>
+            <div className="form-row">
+              <button type="submit" className="auth-form-btn">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </Splash>
     </>
   );
 };

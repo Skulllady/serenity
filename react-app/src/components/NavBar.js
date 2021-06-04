@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import logo from '../images/logo/logo_transparent.png';
 import '../components/stylesheets/nav.css';
+import "../components/stylesheets/index.css";
 
 const NavBar = () => {
   return (

@@ -1,0 +1,27 @@
+import React from 'react';
+import splash_video from '../images/splash_page/relaxing_fishingboat_on_water.mp4';
+import AuthNav from './auth/AuthNav';
+import Footer from './Footer';
+import "./stylesheets/index.css";
+import "./stylesheets/splash.css";
+
+
+const Splash = ({ children }) => {
+  return (
+    <>
+      <AuthNav />
+      <div className="splash">
+        <video id="video" loop="true" autoPlay="autoplay" muted>
+          <source src={splash_video} type="video/mp4"></source>
+        </video>
+
+        <div id="form">
+          {children}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+export default Splash;

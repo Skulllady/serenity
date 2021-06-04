@@ -5,15 +5,14 @@ body{
 
 ::placeholder{
   font-family: 'Quicksand', sans-serif;
-  padding-left: 25px;
 }
 
 button{
   background: white;
   border-radius: 5px;
   font-size: 15px;
-  width: 150px;
-  height: 40px;
+  min-width: 150px;
+  padding: 10px;
   color: rgb(67, 116, 116);
 }
 
@@ -31,4 +30,6 @@ button{
 .secondary-heading{
   font-size:35px;
   font-weight: 500;
+  font-weight: 1000;
 }
+
