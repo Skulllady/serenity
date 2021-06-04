@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import Splash from '../Splash';
+import SplashContainer from '../SplashContainer';
 import "../stylesheets/index.css";
 import "../stylesheets/nav.css";
 import "../stylesheets/form.css";
 
 const SignUpForm = () => {
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const data = await dispatch(signUp())
     if (password === repeatPassword) {
       await dispatch(signUp(username, email, password));
     }
@@ -39,12 +41,12 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
     <>
-      <Splash>
+      <SplashContainer>
         <div className="form-container">
           <div className="main-heading">Welcome to Serenity</div>
           <div className="secondary-heading">Sign Up</div>
@@ -95,7 +97,7 @@ const SignUpForm = () => {
             </div>
           </form>
         </div>
-      </Splash>
+      </SplashContainer>
     </>
   );
 };

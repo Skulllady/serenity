@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <nav className="auth-nav">
       <div className="nav-items">
-        <NavLink to="/" exact={true} activeClassName="active">
+        <NavLink to="/home" exact={true} activeClassName="active">
           <img src={logo} height="100px" />
         </NavLink>
       </div>

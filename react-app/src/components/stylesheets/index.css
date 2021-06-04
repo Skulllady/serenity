@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 body{
   font-family: 'Quicksand', sans-serif;
+  margin-left: 0rem;
+  margin-right: 0rem;
 }
 
 ::placeholder{
@@ -32,4 +34,3 @@ button{
   font-weight: 500;
   font-weight: 1000;
 }
-

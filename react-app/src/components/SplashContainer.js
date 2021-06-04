@@ -6,7 +6,7 @@ import "./stylesheets/index.css";
 import "./stylesheets/splash.css";
 
 
-const Splash = ({ children }) => {
+const SplashContainer = ({ children }) => {
   return (
     <>
       <AuthNav />
@@ -14,8 +14,7 @@ const Splash = ({ children }) => {
         <video id="video" loop="true" autoPlay="autoplay" muted>
           <source src={splash_video} type="video/mp4"></source>
         </video>
-
-        <div id="form">
+        <div id="splash-contents">
           {children}
         </div>
       </div>
@@ -24,4 +23,4 @@ const Splash = ({ children }) => {
   );
 }
 
-export default Splash;
+export default SplashContainer;

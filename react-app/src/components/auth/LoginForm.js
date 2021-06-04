@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
-import Splash from '../Splash';
+import SplashContainer from '../SplashContainer';
 import "../stylesheets/index.css";
 import "../stylesheets/nav.css";
 import "../stylesheets/form.css";
@@ -31,12 +31,12 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
     <>
-      <Splash>
+      <SplashContainer>
         <div className="form-container">
           <div className="main-heading">Welcome back to Serenity</div>
           <div className="secondary-heading">Log In</div>
@@ -71,7 +71,7 @@ const LoginForm = () => {
             </div>
           </form>
         </div>
-      </Splash>
+      </SplashContainer>
     </>
   );
 };
