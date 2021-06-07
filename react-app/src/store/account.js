@@ -2,10 +2,10 @@
 const GET_ACCOUNTS = "accounts/GET_ACCOUNTS"
 
 //action creator
-const getAccounts = (list) => {
+const getAccounts = (accounts) => {
   return {
     type: GET_ACCOUNTS,
-    list
+    accounts
   }
 }
 
@@ -15,7 +15,7 @@ export const displayAccounts = () => async dispatch => {
   if (response.ok) {
     const data = await response.json();
     console.log("DATA!!!", data)
-    dispatch(getAccounts(data))
+    dispatch(getAccounts(data.accounts))
   }
 }
 
@@ -32,6 +32,7 @@ export default function accountReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCOUNTS:
       const allAccounts = {}
+      debugger
       action.accounts.forEach(account => {
         allAccounts[account.id] = account
       })

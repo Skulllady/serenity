@@ -5,20 +5,19 @@ import { displayAccounts } from "../../store/account.js";
 function ViewAccounts() {
   const dispatch = useDispatch();
   const accountsList = useSelector(state => {
-    // debugger
-    console.log(state)
-    return state.accounts
+    console.log("STATE", state)
+    return state.account.list
   })
 
   useEffect(() => {
     dispatch(displayAccounts());
   }, [dispatch]);
 
-
+  console.log("ACCOUNTSLIST", accountsList)
   return (
     <>
       <h3>Accounts</h3>
-      {/* <p>{accountsList}</p> */}
+      <p>{accountsList}</p>
     </>
   )
 }
