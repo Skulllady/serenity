@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import SplashPage from "./components/SplashPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
+import ViewAccounts from '../src/components/accounts/ViewAccounts';
 import Footer from '../src/components/Footer';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         </Route>
         <ProtectedRoute path="/home" exact={true} >
           <NavBar />
+          <ViewAccounts />
           <Footer />
         </ProtectedRoute>
       </Switch>
