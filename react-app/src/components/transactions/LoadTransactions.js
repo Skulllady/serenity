@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { displayTransactions } from "../../store/transaction"
+import { displayTransactions } from "../../store/transaction";
 
 
 function Transaction() {
@@ -17,14 +17,6 @@ function Transaction() {
     dispatch(displayTransactions(accountId))
   }, [dispatch, accountId])
 
-  // TODO Turning integers to currency format (visual purposes only)
-  // let amountElement = document.querySelectorAll(".currency");
-  // console.log("amount element", amountElement)
-  // for (let i = 0; i < amountElement.length; i++) {
-  //   let num = Number(amountElement[i].innerHTML)
-  //     .toLocaleString('en');
-  //   amountElement[i].innerHTML = num;
-  // }
 
   return (
     <>

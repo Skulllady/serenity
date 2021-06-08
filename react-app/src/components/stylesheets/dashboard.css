@@ -1,8 +1,10 @@
 .dashboardContainer{
   display:grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
   grid-template-areas:
-    'sidebar overview overview overview_visual overview_visual'
-    'sidebar transactions_container transactions_container transactions_container transactions_container';
+    'sidebar overview overview_visual overview_visual overview_visual'
+    'sidebar sidebar transactions_container transactions_container transactions_container';
   grid-gap: 10px;
   border: 1px solid #2196F3;
   padding: 10px;

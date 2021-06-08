@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import NavBar from "../NavBar";
+import Footer from '../Footer';
 import { displayAccounts } from "../../store/account.js";
 import LoadTransactions from "../transactions/LoadTransactions.js";
 import '../stylesheets/dashboard.css';
+import Piechart from "../overview/Piechart"
 
 function LoadAccounts() {
   const dispatch = useDispatch();
@@ -20,6 +23,7 @@ function LoadAccounts() {
   console.log("ACCOUNTSLIST", accountsList)
   return (
     <>
+      <NavBar />
       <div className="dashboardContainer">
         <div className="sidebar">
           <h1>Accounts</h1>
@@ -37,11 +41,15 @@ function LoadAccounts() {
           })}
         </div>
         <div className="overview">Overview Table</div>
-        <div className="overview_visual">Pie Chart</div>
+        <div className="overview_visual">
+          <h2>Pie Chart</h2>
+          <Piechart />
+        </div>
         <div className="transactions_container">
           <LoadTransactions />
         </div>
       </div>
+      <Footer />
     </>
   )
 }
