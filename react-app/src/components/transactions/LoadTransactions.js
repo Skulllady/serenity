@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { displayTransactions } from "../../store/transaction";
+import "../stylesheets/dashboard.css"
 
 
 function Transaction() {
@@ -20,23 +21,25 @@ function Transaction() {
 
   return (
     <>
-      <div>Transactions go here</div>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Transaction</th>
-          <th>Amount (USD$)</th>
-        </tr>
-        {transactionList.transactions.map((transaction) => {
-          return (
-            <tr>
-              <td>{transaction.date}</td>
-              <td>{transaction.transaction}</td>
-              <td className="currency">${transaction.amount}</td>
-            </tr>
-          )
-        })}
-      </table>
+      <h2>All Transactions</h2>
+      <div className="table_container">
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount (USD$)</th>
+          </tr>
+          {transactionList.transactions.map((transaction) => {
+            return (
+              <tr>
+                <td>{transaction.date}</td>
+                <td>{transaction.transaction}</td>
+                <td className="currency">${transaction.amount}</td>
+              </tr>
+            )
+          })}
+        </table>
+      </div>
     </>
   )
 }

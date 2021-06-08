@@ -26,7 +26,7 @@ function LoadAccounts() {
       <NavBar />
       <div className="dashboardContainer">
         <div className="sidebar">
-          <h1>Accounts</h1>
+          <h2>Accounts</h2>
           {accountsList.map((account) => {
             return (
               <div>
@@ -40,9 +40,19 @@ function LoadAccounts() {
             )
           })}
         </div>
-        <div className="overview">Overview Table</div>
+        <div className="overview">
+          <h2>Overview</h2>
+          <table>
+            <tr><td>Mortgage/Rent</td><td>$1200</td></tr>
+            <tr><td>Bills</td><td>$198.63</td></tr>
+            <tr><td>Groceries</td><td>$650.92</td></tr>
+            <tr><td>Cash/ATM</td><td>$0</td></tr>
+            <tr><td>Eating Out</td><td>$155.89</td></tr>
+            <tr><td>Shopping</td><td>$189.10</td></tr>
+          </table>
+        </div>
         <div className="overview_visual">
-          <h2>Pie Chart</h2>
+          <h2>Spending Overview</h2>
           <Piechart />
         </div>
         <div className="transactions_container">

@@ -6,7 +6,7 @@ function Piechart() {
     labels: ['Mortgage/Rent', 'Bills', 'Groceries', 'Cash/ATM', 'Eating Out', 'Shopping'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Overview',
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -24,14 +24,18 @@ function Piechart() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)',
         ],
-        borderWidth: 1,
+        borderWidth: 1.5,
       },
     ],
   };
 
   return (
     <>
-      <Pie data={data} />
+      <Pie
+        data={data}
+        id="piechart"
+        options={{ maintainAspectRatio: false }}
+      />
     </>
 
   )
