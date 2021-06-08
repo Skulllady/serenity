@@ -23,23 +23,24 @@ const initialState = {
   list: []
 };
 
-const sortList = list => {
-  return list.map(account => account.account_type)
-}
+//TODO sort accounts displayed by account type
+// const sortList = list => {
+//   return list.map(account => account.account_type)
+// }
 
 //reducer
 export default function accountReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCOUNTS:
       const allAccounts = {}
-      debugger
+      // debugger
       action.accounts.forEach(account => {
         allAccounts[account.id] = account
       })
       return {
         ...allAccounts,
         ...state,
-        list: sortList(action.accounts)
+        list: action.accounts
       }
     default:
       return state;
