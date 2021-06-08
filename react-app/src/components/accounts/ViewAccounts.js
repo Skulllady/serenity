@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 import { displayAccounts } from "../../store/account.js";
 
 function ViewAccounts() {
@@ -17,19 +18,21 @@ function ViewAccounts() {
   console.log("ACCOUNTSLIST", accountsList)
   return (
     <>
-      <h1>Accounts</h1>
-
-      {accountsList.map((account) => {
-        return (
-          <div>
-            <h2>{account.account_type}</h2>
-            <div>{account.institution}</div>
-            <div>XXX{account.account_number % 10000}</div>
-            <div>USD$ {account.balance}</div>
-          </div>
-        )
-      })}
-
+      <div className="sidebar">
+        <h1>Accounts</h1>
+        {accountsList.map((account) => {
+          return (
+            <div>
+              <NavLink to={`/accounts/${account.id}/transactions`}>
+                <h2>{account.account_type}</h2>
+                <div>{account.institution}</div>
+                <div>XXX{account.account_number % 10000}</div>
+                <div>USD$ {account.balance}</div>
+              </NavLink>
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }
