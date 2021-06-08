@@ -1,3 +1,26 @@
 .dashboardContainer{
   display:grid;
+  grid-template-areas:
+    'sidebar overview overview overview_visual overview_visual'
+    'sidebar transactions_container transactions_container transactions_container transactions_container';
+  grid-gap: 10px;
+  border: 1px solid #2196F3;
+  padding: 10px;
+  }
+
+.sidebar{
+  border: 1px solid #0074d3;
+  background-color: #cde1f3;
+}
+.overview{
+  border: 1px solid #0074d3;
+}
+.overview_visual{
+  border: 1px solid #0074d3;
+  background-color: #d2e6f8;
+
+}
+.transactions_container{
+  border: 1px solid #0074d3;
+
 }

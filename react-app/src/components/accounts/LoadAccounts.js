@@ -36,6 +36,8 @@ function LoadAccounts() {
             )
           })}
         </div>
+        <div className="overview">Overview Table</div>
+        <div className="overview_visual">Pie Chart</div>
         <div className="transactions_container">
           <LoadTransactions />
         </div>
