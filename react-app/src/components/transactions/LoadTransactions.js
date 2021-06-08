@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { displayTransactions } from "../../store/transaction"
+import { displayTransactions } from "../../store/transaction";
+import "../stylesheets/dashboard.css"
 
 
 function Transaction() {
@@ -17,34 +18,28 @@ function Transaction() {
     dispatch(displayTransactions(accountId))
   }, [dispatch, accountId])
 
-  // TODO Turning integers to currency format (visual purposes only)
-  // let amountElement = document.querySelectorAll(".currency");
-  // console.log("amount element", amountElement)
-  // for (let i = 0; i < amountElement.length; i++) {
-  //   let num = Number(amountElement[i].innerHTML)
-  //     .toLocaleString('en');
-  //   amountElement[i].innerHTML = num;
-  // }
 
   return (
     <>
-      <div>Transactions go here</div>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Transaction</th>
-          <th>Amount (USD$)</th>
-        </tr>
-        {transactionList.transactions.map((transaction) => {
-          return (
-            <tr>
-              <td>{transaction.date}</td>
-              <td>{transaction.transaction}</td>
-              <td className="currency">${transaction.amount}</td>
-            </tr>
-          )
-        })}
-      </table>
+      <h2>All Transactions</h2>
+      <div className="table_container">
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount (USD$)</th>
+          </tr>
+          {transactionList.transactions.map((transaction) => {
+            return (
+              <tr>
+                <td>{transaction.date}</td>
+                <td>{transaction.transaction}</td>
+                <td className="currency">${transaction.amount}</td>
+              </tr>
+            )
+          })}
+        </table>
+      </div>
     </>
   )
 }

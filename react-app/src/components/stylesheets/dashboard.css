@@ -1,3 +1,52 @@
 .dashboardContainer{
   display:grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-gap: 1em;
+  border: 1px solid #0c68d1;
+  padding: 6em;
+  overflow: hidden;
+  }
+
+.sidebar{
+  /* border: 1px solid #0c68d1; */
+  background-color: rgb(243, 243, 243);
+  grid-column:1/2;
+  grid-row:1/4;
+  padding: 1em;
+}
+.overview{
+  /* border: 1px solid #0c68d1; */
+  grid-column:2/3;
+  grid-row:1/2;
+}
+.overview_visual{
+  /* border: 1px solid #0c68d1; */
+  grid-column:3/6;
+  grid-row:1/2;
+}
+.transactions_container{
+  /* border: 1px solid #0c68d1; */
+  grid-column:2/6;
+  grid-row:2/4;
+}
+
+.overview_visual canvas{
+  height: 50%;
+  background-color: rgb(243, 243, 243);
+}
+
+.table_container{
+  display: flex;
+  justify-content: center;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 15px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
