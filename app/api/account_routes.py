@@ -6,6 +6,7 @@ from app.models import db, User, Account, Transaction
 
 account_routes = Blueprint('accounts', __name__)
 
+# LOAD ALL ACCOUNTS tO SIDEBAR
 @account_routes.route('/')
 def accounts():
   accounts = Account.query.all()
@@ -13,3 +14,10 @@ def accounts():
 
 
 """-------Below this line is TRANSACTIONS Functionality------"""
+
+# LOAD ALL TRANSACTIONS FOR SELECTED ACCOUNT
+@account_routes.route('/<int:id>/transactions')
+@login_required
+def account_transactions(id):
+  transactions = Transaction.query.filter(Transaction.account_id == id)
+  return {"transactions": [transaction.to_dict() for transaction in transactions]}
