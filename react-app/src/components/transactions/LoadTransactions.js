@@ -21,7 +21,6 @@ function Transaction() {
 
   return (
     <>
-      <h2>All Transactions</h2>
       <div className="table_container">
         <table>
           <tr>

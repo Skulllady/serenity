@@ -19,6 +19,7 @@
   /* border: 1px solid #0c68d1; */
   grid-column:2/3;
   grid-row:1/2;
+  display: table;
 }
 .overview_visual{
   /* border: 1px solid #0c68d1; */
@@ -32,8 +33,9 @@
 }
 
 .overview_visual canvas{
-  height: 50%;
+  display: flex;
   background-color: rgb(243, 243, 243);
+  object-fit: contain;
 }
 
 .table_container{
@@ -44,7 +46,7 @@
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 15px;
+  padding: 5px;
 }
 
 tr:nth-child(even) {
