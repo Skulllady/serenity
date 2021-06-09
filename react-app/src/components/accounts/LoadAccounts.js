@@ -7,6 +7,7 @@ import { displayAccounts } from "../../store/account.js";
 import LoadTransactions from "../transactions/LoadTransactions.js";
 import '../stylesheets/dashboard.css';
 import Piechart from "../overview/Piechart"
+import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
 
 function LoadAccounts() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function LoadAccounts() {
             return (
               <div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
+                  <AccountBalanceTwoToneIcon />
                   <h3>{account.account_type}</h3>
                   <h5>{account.institution}</h5>
                   <h5>XXX{account.account_number % 10000}</h5>

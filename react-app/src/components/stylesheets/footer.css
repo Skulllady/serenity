@@ -16,7 +16,7 @@
 .footer-dev-title{
   font-size: 24px;
   font-family: 'Almendra', serif;
-  color:black;
+  color:rgb(9, 131, 161);
 }
 
 .footer-devs-container{
@@ -47,5 +47,5 @@
 
 .footer-dev-link{
   text-decoration: none;
-  color: #016544;
+  color: #1a95a5;
 }

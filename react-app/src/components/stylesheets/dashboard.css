@@ -52,3 +52,9 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+select{
+  width: 1.5em;
+  margin: 5px;
+  color: #1cacd8;
+}

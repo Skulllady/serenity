@@ -1,13 +1,34 @@
-import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { displayTransactions } from "../../store/transaction";
 
 function Piechart() {
+  const { accountId } = useParams();
+  const dispatch = useDispatch();
+  const transactionList = useSelector(state => {
+    return state.transaction
+  })
+  useEffect(() => {
+    dispatch(displayTransactions(accountId))
+  }, [dispatch, accountId])
+
+  let categoryset = new Set();
+  transactionList.transactions.map((transaction) => {
+    if (!(transaction.category_name in categoryset)) {
+      categoryset.add(transaction.category_name);
+    }
+  })
+  let categories = [...categoryset];
   const data = {
-    labels: ['Mortgage/Rent', 'Bills', 'Groceries', 'Cash/ATM', 'Eating Out', 'Shopping'],
+    labels: categories,
     datasets: [
       {
         label: 'Overview',
-        data: [12, 19, 3, 5, 2, 3],
+        data: transactionList.transactions.map((transaction) => {
+          return transaction.amount
+        }),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
