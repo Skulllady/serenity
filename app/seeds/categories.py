@@ -9,6 +9,12 @@ def seed_categories():
     c4 = Category(category="Shopping")
     c5 = Category(category="Eating Out")
     c6 = Category(category="Medical")
+    c7 = Category(category="Gym")
+    c8 = Category(category="Transport")
+    c9 = Category(category="Entertainment")
+    c10 = Category(category="Subscription")
+    c11 = Category(category="Bank Fees")
+    c12 = Category(category="Other")
 
     db.session.add(c1)
     db.session.add(c2)
@@ -16,6 +22,12 @@ def seed_categories():
     db.session.add(c4)
     db.session.add(c5)
     db.session.add(c6)
+    db.session.add(c7)
+    db.session.add(c8)
+    db.session.add(c9)
+    db.session.add(c10)
+    db.session.add(c11)
+    db.session.add(c12)
 
     db.session.commit()
 
