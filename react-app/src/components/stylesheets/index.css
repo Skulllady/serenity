@@ -3,6 +3,7 @@ body{
   font-family: 'Quicksand', sans-serif;
   margin-left: 0rem;
   margin-right: 0rem;
+  color: rgb(87, 87, 87);
 }
 
 ::placeholder{
