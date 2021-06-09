@@ -21,7 +21,7 @@ function Transaction() {
 
   let categorySet = new Set();
   transactionList.transactions.map((transaction) => {
-    if (!(transaction.category_name in categorySet)) {
+    if (transaction.category_name && !(transaction.category_name in categorySet)) {
       categorySet.add(transaction.category_name);
     }
   })

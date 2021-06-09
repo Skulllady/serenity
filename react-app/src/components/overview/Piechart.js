@@ -14,27 +14,21 @@ function Piechart() {
     dispatch(displayTransactions(accountId))
   }, [dispatch, accountId])
 
-  let categorySet = new Set();
-  let categoryObj = new Object();
+  let totalsByCategory = new Object();
   transactionList.transactions.map((transaction) => {
     let eachCategory = transaction.category_name;
-    if (!(transaction.category_name in categorySet)) {
-      categorySet.add(transaction.category_name);
+    if (!totalsByCategory[eachCategory]) {
       //key: category value starts at 0
-      if (!categoryObj[eachCategory]) {
-        categoryObj[eachCategory] = 0;
-      }
-    }
-    if (eachCategory in categoryObj) {
-      categoryObj[eachCategory] += transaction.amount;
-      console.log("OBJECT: ", categoryObj, "Category: ", eachCategory, "Amount: ", transaction.amount)
+      totalsByCategory[eachCategory] = transaction.amount;
+    } else {
+      totalsByCategory[eachCategory] += transaction.amount;
     }
   })
   let pieLabels = []
   let pieValues = []
-  for (const category in categoryObj) {
+  for (const category in totalsByCategory) {
     pieLabels.push(category)
-    pieValues.push(categoryObj[category])
+    pieValues.push(totalsByCategory[category])
   }
   const data = {
     labels: pieLabels,
@@ -55,7 +49,7 @@ function Piechart() {
         borderColor: [
           'rgb(226, 226, 226)',
         ],
-        borderWidth: 1.5,
+        borderWidth: 2.5,
       },
     ],
   };
