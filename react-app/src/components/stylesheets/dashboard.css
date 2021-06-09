@@ -58,3 +58,7 @@ select{
   margin: 5px;
   color: #1cacd8;
 }
+
+a{
+  text-decoration: none;
+}

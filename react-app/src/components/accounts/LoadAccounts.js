@@ -30,7 +30,7 @@ function LoadAccounts() {
           <h2>Accounts</h2>
           {accountsList.map((account) => {
             return (
-              <div>
+              <div className="accounts">
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
                   <AccountBalanceTwoToneIcon />
                   <h3>{account.account_type}</h3>
@@ -43,7 +43,6 @@ function LoadAccounts() {
           })}
         </div>
         <div className="overview">
-          <h2>Overview</h2>
           <table>
             <tr><td>Mortgage/Rent</td><td>$1200</td></tr>
             <tr><td>Bills</td><td>$198.63</td></tr>
@@ -54,13 +53,11 @@ function LoadAccounts() {
           </table>
         </div>
         <div className="overview_visual">
-          <h2>Spending Overview</h2>
           <Piechart />
         </div>
-        <div className="transactions_container">
-          <h2> All Transactions</h2>
-          <LoadTransactions />
-        </div>
+      </div>
+      <div className="transactions_container">
+        <LoadTransactions />
       </div>
       <Footer />
     </>

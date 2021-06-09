@@ -19,13 +19,13 @@ function Transaction() {
     dispatch(displayTransactions(accountId))
   }, [dispatch, accountId])
 
-  let categoryset = new Set();
+  let categorySet = new Set();
   transactionList.transactions.map((transaction) => {
-    if (!(transaction.category_name in categoryset)) {
-      categoryset.add(transaction.category_name);
+    if (!(transaction.category_name in categorySet)) {
+      categorySet.add(transaction.category_name);
     }
   })
-  let categories = [...categoryset];
+  let categories = [...categorySet];
   console.log(categories)
 
   //TODO Customise dates on dashboard based on csv info
@@ -36,7 +36,7 @@ function Transaction() {
 
   return (
     <>
-        <h2>ALL TRANSACTIONS</h2>
+      <h2>ALL TRANSACTIONS</h2>
       <div className="table_container">
         <table>
           <tbody>
