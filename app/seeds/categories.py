@@ -14,7 +14,9 @@ def seed_categories():
     c9 = Category(category="Entertainment")
     c10 = Category(category="Subscription")
     c11 = Category(category="Bank Fees")
-    c12 = Category(category="Other")
+    c12 = Category(category="Transfer")
+    c13 = Category(category="Loan Payment")
+    c14 = Category(category="Other")
 
     db.session.add(c1)
     db.session.add(c2)
@@ -28,6 +30,9 @@ def seed_categories():
     db.session.add(c10)
     db.session.add(c11)
     db.session.add(c12)
+    db.session.add(c13)
+    db.session.add(c14)
+
 
     db.session.commit()
 

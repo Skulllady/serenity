@@ -18,9 +18,12 @@ def seed_transactions():
     t13 = Transaction(date=20210612, transaction="KFC", amount=25.32, account_id=1, category_id=5)
     t14 = Transaction(date=20210612, transaction="Walmart Pharmacy", amount=53.89, account_id=1, category_id=6)
     t15 = Transaction(date=20210613, transaction="Wendy's", amount=45.46, account_id=1, category_id=5)
-    t16 = Transaction(date=20210813, transaction="Transfer to savings", amount=2888.25, account_id=2)
-    t17 = Transaction(date=20210901, transaction="Student Loan", amount=13000, account_id=3)
-    t18 = Transaction(date=20210915, transaction="401K Account", amount=15000, account_id=4)
+    t16 = Transaction(date=20210813, transaction="Transfer to savings", amount=2888.25, account_id=2, category_id=12)
+    t16 = Transaction(date=20210901, transaction="Transfer to savings", amount=3000.15, account_id=2, category_id=12)
+    t17 = Transaction(date=20210905, transaction="Student Loan", amount=-13000, account_id=3, category_id=13)
+    t18 = Transaction(date=20210915, transaction="401K Account", amount=15000, account_id=4, category_id=14)
+
+
 
     db.session.add(t1)
     db.session.add(t2)

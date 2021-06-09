@@ -20,5 +20,6 @@ class Transaction(db.Model):
       "transaction": self.transaction,
       "amount": self.amount,
       "account_id": self.account_id,
-      "category_id": self.category_id
+      "category_id": self.category_id,
+      "category_name": self.category.category
     }

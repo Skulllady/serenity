@@ -19,7 +19,8 @@ So ask yourself, are you financially healthy? 💳
 * Categories
 
 ### Technologies
--
+- [material-ui](https://material-ui.com/)
+- [chart.js](https://www.chartjs.org/)
 
 ### Special Thanks
 - Calm FishingBoat Video by Kristian Aleksandrov from Pexels
