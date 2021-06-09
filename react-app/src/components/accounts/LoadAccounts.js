@@ -31,10 +31,10 @@ function LoadAccounts() {
             return (
               <div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
-                  <h2>{account.account_type}</h2>
-                  <div>{account.institution}</div>
-                  <div>XXX{account.account_number % 10000}</div>
-                  <div>USD ${account.balance}</div>
+                  <h3>{account.account_type}</h3>
+                  <h5>{account.institution}</h5>
+                  <h5>XXX{account.account_number % 10000}</h5>
+                  <h5>USD ${account.balance}</h5>
                 </NavLink>
               </div>
             )
@@ -56,6 +56,7 @@ function LoadAccounts() {
           <Piechart />
         </div>
         <div className="transactions_container">
+          <h2> All Transactions</h2>
           <LoadTransactions />
         </div>
       </div>
