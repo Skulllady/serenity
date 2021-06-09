@@ -36,6 +36,7 @@ function Transaction() {
 
   return (
     <>
+        <h2>ALL TRANSACTIONS</h2>
       <div className="table_container">
         <table>
           <tbody>
