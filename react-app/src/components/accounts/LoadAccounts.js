@@ -33,11 +33,10 @@ function LoadAccounts() {
             return (
               <div className="accounts">
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
-                  <AccountBalanceTwoToneIcon />
-                  <h3>{account.account_type}</h3>
+                  <h3><AccountBalanceTwoToneIcon />  {account.account_type}</h3>
                   <h5>{account.institution}</h5>
                   <h5>XXX{account.account_number % 10000}</h5>
-                  <h5>USD ${account.balance}</h5>
+                  <h5>Balance: USD ${account.balance}</h5>
                 </NavLink>
               </div>
             )

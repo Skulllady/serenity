@@ -62,3 +62,22 @@ select{
 a{
   text-decoration: none;
 }
+
+
+input[type="file"] {
+  display: none;
+}
+
+#upload_label{
+  background: white;
+  border: rgb(185, 182, 182) solid 2px;
+  border-radius: 5px;
+  font-size: 15px;
+  min-width: 150px;
+  padding: 10px;
+  color: rgb(67, 116, 116);
+}
+
+#upload_icon{
+  padding-top: 3px;
+}

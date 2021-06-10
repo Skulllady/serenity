@@ -1,4 +1,4 @@
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -56,7 +56,7 @@ function Piechart() {
 
   return (
     <>
-      <Pie
+      <Doughnut
         data={data}
         id="piechart"
         options={{ maintainAspectRatio: false }}

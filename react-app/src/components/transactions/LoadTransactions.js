@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { displayTransactions } from "../../store/transaction";
+import UploadTransactions from "./UploadTransactions";
 import "../stylesheets/dashboard.css"
 import "../stylesheets/index.css"
 
@@ -37,6 +38,7 @@ function Transaction() {
   return (
     <>
       <h2>ALL TRANSACTIONS</h2>
+      <UploadTransactions />
       <div className="table_container">
         <table>
           <tbody>

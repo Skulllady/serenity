@@ -4,7 +4,10 @@ import AuthNav from './auth/AuthNav';
 import Footer from './Footer';
 import "./stylesheets/index.css";
 import "./stylesheets/splash.css";
-
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import UpdateTwoToneIcon from '@material-ui/icons/UpdateTwoTone';
+import MonetizationOnTwoToneIcon from '@material-ui/icons/MonetizationOnTwoTone';
+import UpdateIcon from '@material-ui/icons/Update';
 
 const SplashContainer = ({ children }) => {
   return (
@@ -16,6 +19,12 @@ const SplashContainer = ({ children }) => {
         </video>
         <div id="splash-contents">
           {children}
+        </div>
+        <div>
+          <TrendingUpIcon />
+          <UpdateTwoToneIcon />
+          <MonetizationOnTwoToneIcon />
+          <UpdateIcon />
         </div>
       </div>
       <Footer />
