@@ -1,17 +1,26 @@
 from flask_login import login_required
 from flask import Blueprint
 from app.models import db, User, Account, Transaction
+from ../forms import CreateAccountForm
 
 """-------Below this line is ACCOUNTS Functionality------"""
 
 account_routes = Blueprint('accounts', __name__)
 
-# LOAD ALL ACCOUNTS tO SIDEBAR
+# LOAD ALL ACCOUNTS TO SIDEBAR
 @account_routes.route('/')
+@login_required
 def accounts():
   accounts = Account.query.all()
   return {"accounts": [account.to_dict() for account in accounts]}
 
+
+# CREATE A NEW ACCOUNT
+@account_routes.route('/accounts/', methods=['POST'])
+@login_required
+def create_account():
+  accounts = Account.query.all()
+  return {"accounts": [account.to_dict() for account in accounts]}
 
 """-------Below this line is TRANSACTIONS Functionality------"""
 
