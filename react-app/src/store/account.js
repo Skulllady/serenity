@@ -1,11 +1,19 @@
 //action
 const GET_ACCOUNTS = "accounts/GET_ACCOUNTS"
+const POST_ACCOUNT = "accounts/POST_ACCOUNT"
 
 //action creator
 const getAccounts = (accounts) => {
   return {
     type: GET_ACCOUNTS,
     accounts
+  }
+}
+
+const postAccount = (payload) => {
+  return {
+    type: POST_ACCOUNT,
+    payload
   }
 }
 
@@ -16,6 +24,21 @@ export const displayAccounts = () => async dispatch => {
     const data = await response.json();
     console.log("DATA!!!", data)
     dispatch(getAccounts(data.accounts))
+  }
+}
+
+export const createAccount = (payload) => async dispatch => {
+  const { accountNumber, accountName, accountType, institution, balance } = payload;
+  const response = await fetch(`/api/accounts/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload)
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(postAccount(data))
   }
 }
 
@@ -31,6 +54,7 @@ const initialState = {
 //reducer
 export default function accountReducer(state = initialState, action) {
   switch (action.type) {
+
     case GET_ACCOUNTS:
       const allAccounts = {}
       // debugger
@@ -42,6 +66,10 @@ export default function accountReducer(state = initialState, action) {
         ...state,
         list: action.accounts
       }
+
+    case POST_ACCOUNT:
+      return { ...state, ...action.payload };
+
     default:
       return state;
   };
