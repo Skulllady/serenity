@@ -8,7 +8,7 @@ export default function UploadTransactions() {
     <>
       <label id="upload_label">
         <input type="file" accept=".csv" />
-        <PublishIcon id="upload_icon" />  Upload Transactions
+        <PublishIcon id="upload_icon" /> Upload Transactions
       </label>
     </>
   )
