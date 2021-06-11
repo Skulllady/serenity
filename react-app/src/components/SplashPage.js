@@ -8,7 +8,7 @@ function SplashPage() {
   const user = useSelector(state => state.session.user);
 
   if (user) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/accounts/1/transactions" />;
   }
 
   return (

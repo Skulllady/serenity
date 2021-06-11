@@ -21,19 +21,18 @@ def accounts():
 def create_account():
   form = CreateAccountForm()
   # print(f'formMmMmMmMm{form}')
-  if form.validate_on_submit():
-    new_account = Account(
-      account_number=form.data['accountNumber'],
-      account_name=form.data['accountName'],
-      account_type=form.data['accountType'],
-      institution=form.data['institution'],
-      balance=form.data['balance'],
-      user_id=current_user.id,
-      )
-    db.session.add(new_account)
-    db.session.commit()
-    return new_account.to_dict()
-  return {'message': "All fields must be entered"}
+  new_account = Account(
+    account_number=form.data['accountNumber'],
+    account_name=form.data['accountName'],
+    account_type=form.data['accountType'],
+    institution=form.data['institution'],
+    balance=form.data['balance'],
+    user_id=current_user.id,
+  )
+  db.session.add(new_account)
+  db.session.commit()
+  return new_account.to_dict()
+  # return {'message': "All fields must be entered"}
 
 """-------Below this line is TRANSACTIONS Functionality------"""
 

@@ -31,7 +31,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/accounts/1/transactions" />;
   }
 
   return (

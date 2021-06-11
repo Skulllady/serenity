@@ -39,10 +39,8 @@ function App() {
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
-        <ProtectedRoute path="/home" exact={true} >
-          <LoadAccounts />
-        </ProtectedRoute>
         <ProtectedRoute path="/accounts/:accountId/transactions" exact={true}>
+          <LoadAccounts />
           <Dashboard />
         </ProtectedRoute>
       </Switch>
