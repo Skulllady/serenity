@@ -28,7 +28,6 @@ export const displayAccounts = () => async dispatch => {
 }
 
 export const createAccount = (payload) => async dispatch => {
-  const { accountNumber, accountName, accountType, institution, balance } = payload;
   const response = await fetch(`/api/accounts/`, {
     method: 'POST',
     headers: {
@@ -61,6 +60,9 @@ export default function accountReducer(state = initialState, action) {
       action.accounts.forEach(account => {
         allAccounts[account.id] = account
       })
+      // state: {"omg": 123}
+      // allAccounts{1: {accountname:stuff}, 2:{accountname:morestuff}}
+      // newstate {1: {id:1}, 2:{id:2}, "omg": 123, list: [{accountname: stuff}]}
       return {
         ...allAccounts,
         ...state,
@@ -68,7 +70,16 @@ export default function accountReducer(state = initialState, action) {
       }
 
     case POST_ACCOUNT:
-      return { ...state, ...action.payload };
+      const newAccount = action.payload
+      //state = {1: {id:1}, list: [{id:1}]}
+      //newAccount = {id:2}
+      //newState = {1: {id:1}, 2:{id:2}, list: [{id:1}, {id:2}]}
+      //[...state.list] creates a copy of the old list then add the new account
+      return {
+        ...state,
+        [newAccount.id]: newAccount,
+        list: [...state.list, newAccount]
+      };
 
     default:
       return state;

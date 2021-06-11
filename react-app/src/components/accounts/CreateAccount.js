@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { createAccount } from "../../store/account";
+import { createAccount, displayAccounts } from "../../store/account";
 
 
 const CreateAccountForm = () => {
@@ -13,7 +13,20 @@ const CreateAccountForm = () => {
   const account = useSelector(state => state.accounts)
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    await dispatch(createAccount());
-  }, [dispatch]);
+  const createAccountOnSubmit = async (e) => {
+    e.preventDefault();
+    payload = {
+      accountNumber,
+      accountName,
+      accountType,
+      institution,
+      balance
+    }
+
+    await dispatch(createAccount(payload));
+    dispatch(displayAccounts());
+  }
+
+
+
 }
