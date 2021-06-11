@@ -9,26 +9,30 @@ import '../stylesheets/dashboard.css';
 import Piechart from "../overview/Piechart"
 import Table from "../overview/Table"
 import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import CreateAccountForm from "./CreateAccountForm"
 
 function LoadAccounts() {
   const dispatch = useDispatch();
   const accountsList = useSelector(state => {
-    console.log("STATE.ACCOUNT", state.account)
-    // debugger
     return state.account.list
   })
+  const addAccountButton = (e) => {
+    e.preventDefault()
+  }
 
   useEffect(() => {
     dispatch(displayAccounts());
   }, [dispatch]);
 
-  console.log("ACCOUNTSLIST", accountsList)
   return (
     <>
       <NavBar />
       <div className="dashboardContainer">
         <div className="sidebar">
           <h2>Accounts</h2>
+          <AddBoxIcon />
+          <CreateAccountForm />
           {accountsList.map((account) => {
             return (
               <div className="accounts">

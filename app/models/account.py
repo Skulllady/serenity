@@ -6,7 +6,7 @@ class Account(db.Model):
   __tablename__ = 'accounts'
 
   id = db.Column(db.Integer, primary_key = True)
-  account_number = db.Column(db.Integer, nullable = False, unique = True)
+  account_number = db.Column(db.String(255), nullable = False, unique = True)
   account_name = db.Column(db.String(255), nullable = False)
   account_type = db.Column(db.String(255), nullable = False)
   institution = db.Column(db.String(255), nullable = False)

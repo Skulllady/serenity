@@ -16,23 +16,24 @@ def accounts():
 
 
 # CREATE A NEW ACCOUNT
-@account_routes.route('/accounts/', methods=['POST'])
+@account_routes.route('/', methods=['POST'])
 @login_required
-def create_account(userId):
+def create_account():
   form = CreateAccountForm()
+  # print(f'formMmMmMmMm{form}')
   if form.validate_on_submit():
     new_account = Account(
-      account_number=form.data['account_number'],
-      account_name=form.data['account_name'],
-      account_type=form.data['account_type'],
+      account_number=form.data['accountNumber'],
+      account_name=form.data['accountName'],
+      account_type=form.data['accountType'],
       institution=form.data['institution'],
       balance=form.data['balance'],
       user_id=current_user.id,
-    )
+      )
     db.session.add(new_account)
     db.session.commit()
     return new_account.to_dict()
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  return {'message': "All fields must be entered"}
 
 """-------Below this line is TRANSACTIONS Functionality------"""
 
