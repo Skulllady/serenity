@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import NavBar from "../NavBar";
@@ -9,11 +9,14 @@ import '../stylesheets/dashboard.css';
 import Piechart from "../overview/Piechart"
 import Table from "../overview/Table"
 import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
-import AddBoxIcon from '@material-ui/icons/AddBox';
+import EditIcon from '@material-ui/icons/Edit';
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import CancelPresentationRoundedIcon from '@material-ui/icons/CancelPresentationRounded';
 import CreateAccountForm from "./CreateAccountForm"
 
 function LoadAccounts() {
   const dispatch = useDispatch();
+  const [showNewAccountForm, setShowNewAccountForm] = useState(false)
   const accountsList = useSelector(state => {
     return state.account.list
   })
@@ -31,13 +34,22 @@ function LoadAccounts() {
       <div className="dashboardContainer">
         <div className="sidebar">
           <h2>Accounts</h2>
-          <AddBoxIcon />
-          <CreateAccountForm />
+          <div hidden={showNewAccountForm}>
+            <button
+              onClick={() => setShowNewAccountForm(true)}
+            ><AddBoxOutlinedIcon /> New Account</button>
+          </div>
+          <div hidden={!showNewAccountForm}>
+            <button
+              onClick={() => setShowNewAccountForm(false)}
+            ><CancelPresentationRoundedIcon /> Cancel</button>
+            <CreateAccountForm />
+          </div>
           {accountsList.map((account) => {
             return (
               <div className="accounts">
+                <h3><AccountBalanceTwoToneIcon />  {account.account_type}</h3>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
-                  <h3><AccountBalanceTwoToneIcon />  {account.account_type}</h3>
                   <h5>{account.institution}</h5>
                   <h5>XXX{account.account_number % 10000}</h5>
                   <h5>Balance: USD ${account.balance}</h5>

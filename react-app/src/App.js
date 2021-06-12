@@ -7,7 +7,6 @@ import SignUpForm from "./components/auth/SignUpForm";
 import SplashPage from "./components/SplashPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
-import LoadAccounts from '../src/components/accounts/LoadAccounts';
 import Dashboard from './components/Dashboard';
 
 
@@ -40,7 +39,6 @@ function App() {
           <SplashPage />
         </Route>
         <ProtectedRoute path="/accounts/:accountId/transactions" exact={true}>
-          <LoadAccounts />
           <Dashboard />
         </ProtectedRoute>
       </Switch>

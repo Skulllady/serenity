@@ -1,6 +1,7 @@
 //action
 const GET_ACCOUNTS = "accounts/GET_ACCOUNTS"
 const POST_ACCOUNT = "accounts/POST_ACCOUNT"
+const PUT_ACCOUNT = "accounts/PUT_ACCOUNT"
 
 //action creator
 const getAccounts = (accounts) => {
@@ -13,6 +14,13 @@ const getAccounts = (accounts) => {
 const postAccount = (payload) => {
   return {
     type: POST_ACCOUNT,
+    payload
+  }
+}
+
+const putAccount = (payload) => {
+  return {
+    type: PUT_ACCOUNT,
     payload
   }
 }
@@ -38,6 +46,20 @@ export const createAccount = (payload) => async dispatch => {
   if (response.ok) {
     const data = await response.json();
     dispatch(postAccount(data))
+  }
+}
+
+export const updateAccount = ({ accountId, accountNumber, accountName, accountType, institution, balance }) => async dispatch => {
+  const response = await fetch(`/api/accounts/${accountId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ accountId, accountNumber, accountName, accountType, institution, balance })
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(putAccount(data))
   }
 }
 
@@ -70,6 +92,18 @@ export default function accountReducer(state = initialState, action) {
       }
 
     case POST_ACCOUNT:
+      const newAccount = action.payload
+      //state = {1: {id:1}, list: [{id:1}]}
+      //newAccount = {id:2}
+      //newState = {1: {id:1}, 2:{id:2}, list: [{id:1}, {id:2}]}
+      //[...state.list] creates a copy of the old list then add the new account
+      return {
+        ...state,
+        [newAccount.id]: newAccount,
+        list: [...state.list, newAccount]
+      };
+
+    case PUT_ACCOUNT:
       const newAccount = action.payload
       //state = {1: {id:1}, list: [{id:1}]}
       //newAccount = {id:2}
