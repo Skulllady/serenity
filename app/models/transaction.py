@@ -21,5 +21,5 @@ class Transaction(db.Model):
       "amount": self.amount,
       "account_id": self.account_id,
       "category_id": self.category_id,
-      "category_name": self.category.category
+      "category_name": self.category.category if self.category else 'Uncategorized'
     }
