@@ -56,9 +56,9 @@ function Transaction() {
                   <td className="currency">${transaction.amount}</td>
                   <td>  <label for="categories">{transaction.category_name}</label>
                     <select name="categories" id="categories">
-                      <option></option>
+                      <option>---</option>
                       {categories.map((category) => {
-                        return <option value="Change">{category}</option>
+                        return <option value={category}>{category}</option>
                       })}
                     </select></td>
                 </tr>
