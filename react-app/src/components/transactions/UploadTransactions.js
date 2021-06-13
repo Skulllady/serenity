@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PublishIcon from '@material-ui/icons/Publish';
-import handleSubmission from '../../store/transaction'
 import "../stylesheets/dashboard.css";
 
 export default function UploadTransactions() {
@@ -16,6 +15,26 @@ export default function UploadTransactions() {
     setSelectedFile(event.target.files[0]);
     debugger
     setIsUploadConfirmed(true);
+  };
+
+  const handleFileSubmission = () => {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    fetch(
+      `/api/accounts/${accountId}/transactions/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log('Success:', result);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   return (
@@ -33,7 +52,7 @@ export default function UploadTransactions() {
             lastModifiedDate:{' '}
             {selectedFile.lastModifiedDate.toLocaleDateString()}
           </p>
-          <button onClick={handleSubmission}><CheckBoxIcon /> Confirm Upload </button>
+          <button onClick={handleFileSubmission}><CheckBoxIcon /> Confirm Upload </button>
         </div>
       )
       }

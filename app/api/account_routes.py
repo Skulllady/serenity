@@ -2,6 +2,8 @@ from flask_login import login_required, current_user
 from flask import Blueprint, request
 from app.models import db, User, Account, Transaction
 from app.forms.account_form import AccountForm
+from datetime import datetime
+import pandas as pd
 
 """------------------------------------------------------------------------"""
 """----------------Below this line is ACCOUNTS Functionality---------------"""
@@ -74,4 +76,18 @@ def account_transactions(id):
 @login_required
 def account_transactions_upload(id):
   file = request.files['file']
-  print(f'{file.filename}')
+  rowsOfData = pd.read_csv(file, sep = ",", header = None, names = ['Date','Amount $USD','Transaction'])
+
+  for index, row in rowsOfData.iterrows():
+    newTransaction = Transaction(
+      date = datetime.strptime(row['Date'], '%m/%d/%Y').date(),
+      amount = row['Amount $USD'],
+      transaction = row['Transaction'],
+      account_id = id,
+    )
+    db.session.add(newTransaction)
+    db.session.commit()
+    break
+  # print(f'HERE ARE ROWSSS: {rowsOfData.head()}')
+  # print(f'HERE IS FIIIIILE NAME {file.filename}')
+  return ''

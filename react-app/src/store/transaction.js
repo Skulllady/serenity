@@ -22,27 +22,6 @@ export const displayTransactions = (id) => async (dispatch) => {
   }
 }
 
-export const handleSubmission = () => {
-  const formData = new FormData();
-
-  formData.append('file', selectedFile);
-
-  fetch(
-    `/api/accounts/${accountId}/transactions/upload`,
-    {
-      method: 'POST',
-      body: formData,
-    }
-  )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log('Success:', result);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-};
-
 const initialState = {
   transactions: []
 }
