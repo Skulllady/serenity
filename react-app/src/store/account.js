@@ -51,7 +51,7 @@ export const createAccount = (payload) => async dispatch => {
 
 export const updateAccount = (payload) => async dispatch => {
   const { accountId, accountNumber, accountName, accountType, institution, balance } = payload;
-  const response = await fetch(`/api/accounts/${accountId}`, {
+  const response = await fetch(`/api/accounts/${accountId}/transactions`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

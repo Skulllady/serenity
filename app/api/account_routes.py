@@ -38,7 +38,7 @@ def create_account():
 
 
 # UPDATE EXISTING ACCOUNT
-@account_routes.route('/<int:id>', methods=['PUT'])
+@account_routes.route('/<int:id>/transactions', methods=['PUT'])
 @login_required
 def update_account(id):
   form = AccountForm()

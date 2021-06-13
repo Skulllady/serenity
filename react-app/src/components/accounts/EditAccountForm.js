@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { updateAccount, displayAccounts } from "../../store/account";
 
 
 const UpdateAccountForm = () => {
 
-  const [accountNumber, setAccountNumber] = useState("account.accountNumber");
-  const [accountName, setAccountName] = useState("account.accountName");
-  const [accountType, setAccountType] = useState("account.accountType");
-  const [institution, setInstitution] = useState("account.institution");
-  const [balance, setBalance] = useState("account.balance");
-
   const { accountId } = useParams();
-  const account = useSelector(state => state.accounts)
+  const account = useSelector(state => state.account[accountId])
+  // debugger
+
+  const [accountNumber, setAccountNumber] = useState(account.account_number);
+  const [accountName, setAccountName] = useState(account.account_name);
+  const [accountType, setAccountType] = useState(account.account_type);
+  const [institution, setInstitution] = useState(account.institution);
+  const [balance, setBalance] = useState(account.balance);
+
   const dispatch = useDispatch();
 
   const updateAccountOnSubmit = async (e) => {
@@ -20,6 +23,7 @@ const UpdateAccountForm = () => {
     e.preventDefault();
 
     const payload = {
+      accountId,
       accountNumber,
       accountName,
       accountType,
@@ -52,14 +56,12 @@ const UpdateAccountForm = () => {
 
       <label>Account Number</label>
       <input
-        placeholder="enter account number"
         onChange={updateAccountNumber}
         value={accountNumber}
       ></input>
 
       <label>Account Name</label>
       <input
-        placeholder="enter account name"
         onChange={updateAccountName}
         value={accountName}
       ></input>
@@ -77,14 +79,12 @@ const UpdateAccountForm = () => {
 
       <label>Institution</label>
       <input
-        placeholder="enter financial institution"
         onChange={updateInstitution}
         value={institution}
       ></input>
 
       <label>Current Balance: $</label>
       <input
-        placeholder="enter account balance"
         onChange={updateBalance}
         value={balance}
       ></input>

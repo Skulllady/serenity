@@ -56,12 +56,12 @@ function LoadAccounts() {
                   <h5>XXX{account.account_number % 10000}</h5>
                   <h5>Balance: USD ${account.balance}</h5>
                 </NavLink>
-                <div hidden={showEditAccountForm}>
+                <div hidden={showEditAccountForm === account.id}>
                   <div
-                    onClick={() => setShowEditAccountForm(true)}
+                    onClick={() => setShowEditAccountForm(account.id)}
                   ><EditIcon /></div>
                 </div>
-                <div hidden={!showEditAccountForm}>
+                <div hidden={!(showEditAccountForm === account.id)}>
                   <div
                     onClick={() => setShowEditAccountForm(false)}
                   ><CancelPresentationRoundedIcon /> Cancel</div>
