@@ -8,7 +8,6 @@ const UpdateAccountForm = () => {
 
   const { accountId } = useParams();
   const account = useSelector(state => state.account[accountId])
-  // debugger
 
   const [accountNumber, setAccountNumber] = useState(account.account_number);
   const [accountName, setAccountName] = useState(account.account_name);
@@ -18,7 +17,7 @@ const UpdateAccountForm = () => {
 
   const dispatch = useDispatch();
 
-  const updateAccountOnSubmit = async (e) => {
+  const updateAccountOnSubmit = (e) => {
 
     e.preventDefault();
 
@@ -31,8 +30,7 @@ const UpdateAccountForm = () => {
       balance
     }
 
-    await dispatch(updateAccount(payload));
-    dispatch(displayAccounts());
+    dispatch(updateAccount(payload));
   }
 
   const updateAccountNumber = (e) => {

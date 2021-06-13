@@ -64,6 +64,8 @@ export const updateAccount = (payload) => async dispatch => {
   }
 }
 
+
+
 const initialState = {
   list: []
 };
@@ -79,7 +81,6 @@ export default function accountReducer(state = initialState, action) {
 
     case GET_ACCOUNTS:
       const allAccounts = {}
-      // debugger
       action.accounts.forEach(account => {
         allAccounts[account.id] = account
       })
@@ -98,7 +99,6 @@ export default function accountReducer(state = initialState, action) {
       //newAccount = {id:2}
       //newState = {1: {id:1}, 2:{id:2}, list: [{id:1}, {id:2}]}
       //[...state.list] creates a copy of the old list then add the new account
-      // debugger
       return {
         ...state,
         [newAccount.id]: newAccount,
@@ -110,7 +110,6 @@ export default function accountReducer(state = initialState, action) {
       let accountId = updatedAccount.id
       let accountToEdit = (eachAccount) => eachAccount.id === accountId
       let index = state.list.findIndex(accountToEdit)
-      // debugger
       return {
         ...state,
         [updatedAccount.id]: updatedAccount,

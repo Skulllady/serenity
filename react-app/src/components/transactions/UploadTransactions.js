@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PublishIcon from '@material-ui/icons/Publish';
+import { displayTransactions } from '../../store/transaction';
 import "../stylesheets/dashboard.css";
 
 export default function UploadTransactions() {
 
   const { accountId } = useParams();
-
+  const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState();
   const [isUploadConfirmed, setIsUploadConfirmed] = useState(false);
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
-    debugger
     setIsUploadConfirmed(true);
   };
 
-  const handleFileSubmission = () => {
+  const fileSubmission = async (e) => {
+    e.preventDefault();
+    await uploadFile()
+    // debugger
+    const action = displayTransactions(accountId)
+    dispatch(action)
+  }
+  const uploadFile = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
 
-    fetch(
+    return fetch(
       `/api/accounts/${accountId}/transactions/upload`,
       {
         method: 'POST',
         body: formData,
       }
     )
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('Success:', result);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
   };
 
   return (
@@ -52,7 +53,7 @@ export default function UploadTransactions() {
             lastModifiedDate:{' '}
             {selectedFile.lastModifiedDate.toLocaleDateString()}
           </p>
-          <button onClick={handleFileSubmission}><CheckBoxIcon /> Confirm Upload </button>
+          <button onClick={fileSubmission}><CheckBoxIcon /> Confirm Upload </button>
         </div>
       )
       }

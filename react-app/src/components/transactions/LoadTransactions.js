@@ -12,7 +12,6 @@ function Transaction() {
   const dispatch = useDispatch();
   const transactionList = useSelector(state => {
     console.log("TRANSACTION STATE...", state.transaction)
-    // debugger
     return state.transaction
   })
 
