@@ -43,8 +43,6 @@ def create_account():
 def update_account(id):
   form = AccountForm()
   accountToUpdate = Account.query.get(id)
-  # print(f'This is the existing account that needs to be UPDATEDDD: {accountToUpdate}')
-  # breakpoint()
   accountToUpdate.account_number = form.data['accountNumber']
   accountToUpdate.account_name = form.data['accountName']
   accountToUpdate.account_type = form.data['accountType']
@@ -55,8 +53,6 @@ def update_account(id):
   db.session.add(accountToUpdate)
   db.session.commit()
   return accountToUpdate.to_dict()
-
-
 
 
 

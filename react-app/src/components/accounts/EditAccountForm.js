@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateAccount, displayAccounts } from "../../store/account";
 
 
 const UpdateAccountForm = () => {
-  const [accountNumber, setAccountNumber] = useState("");
-  const [accountName, setAccountName] = useState("");
-  const [accountType, setAccountType] = useState("");
-  const [institution, setInstitution] = useState("");
-  const [balance, setBalance] = useState(0);
 
-  // const account = useSelector(state => state.accounts)
-  // const userId = useSelector(state => state.session.user.id)
+  const [accountNumber, setAccountNumber] = useState("account.accountNumber");
+  const [accountName, setAccountName] = useState("account.accountName");
+  const [accountType, setAccountType] = useState("account.accountType");
+  const [institution, setInstitution] = useState("account.institution");
+  const [balance, setBalance] = useState("account.balance");
+
+  const { accountId } = useParams();
+  const account = useSelector(state => state.accounts)
   const dispatch = useDispatch();
 
   const updateAccountOnSubmit = async (e) => {
+
     e.preventDefault();
+
     const payload = {
       accountNumber,
       accountName,

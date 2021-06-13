@@ -13,10 +13,12 @@ import EditIcon from '@material-ui/icons/Edit';
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import CancelPresentationRoundedIcon from '@material-ui/icons/CancelPresentationRounded';
 import CreateAccountForm from "./CreateAccountForm"
+import EditAccountForm from "./EditAccountForm"
 
 function LoadAccounts() {
   const dispatch = useDispatch();
   const [showNewAccountForm, setShowNewAccountForm] = useState(false)
+  const [showEditAccountForm, setShowEditAccountForm] = useState(false)
   const accountsList = useSelector(state => {
     return state.account.list
   })
@@ -35,14 +37,14 @@ function LoadAccounts() {
         <div className="sidebar">
           <h2>Accounts</h2>
           <div hidden={showNewAccountForm}>
-            <button
+            <div
               onClick={() => setShowNewAccountForm(true)}
-            ><AddBoxOutlinedIcon /> New Account</button>
+            ><AddBoxOutlinedIcon /> New Account</div>
           </div>
           <div hidden={!showNewAccountForm}>
-            <button
+            <div
               onClick={() => setShowNewAccountForm(false)}
-            ><CancelPresentationRoundedIcon /> Cancel</button>
+            ><CancelPresentationRoundedIcon /> Cancel</div>
             <CreateAccountForm />
           </div>
           {accountsList.map((account) => {
@@ -54,6 +56,17 @@ function LoadAccounts() {
                   <h5>XXX{account.account_number % 10000}</h5>
                   <h5>Balance: USD ${account.balance}</h5>
                 </NavLink>
+                <div hidden={showEditAccountForm}>
+                  <div
+                    onClick={() => setShowEditAccountForm(true)}
+                  ><EditIcon /></div>
+                </div>
+                <div hidden={!showEditAccountForm}>
+                  <div
+                    onClick={() => setShowEditAccountForm(false)}
+                  ><CancelPresentationRoundedIcon /> Cancel</div>
+                  <EditAccountForm />
+                </div>
               </div>
             )
           })}
