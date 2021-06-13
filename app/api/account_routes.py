@@ -77,7 +77,7 @@ def account_transactions(id):
 def account_transactions_upload(id):
   file = request.files['file']
   rowsOfData = pd.read_csv(file, sep = ",", header = None, names = ['Date','Amount $USD','Transaction'])
-
+  arrayOfTransactionsToBulkInsert = []
   for index, row in rowsOfData.iterrows():
     newTransaction = Transaction(
       date = datetime.strptime(row['Date'], '%m/%d/%Y').date(),
@@ -85,9 +85,9 @@ def account_transactions_upload(id):
       transaction = row['Transaction'],
       account_id = id,
     )
-    db.session.add(newTransaction)
-    db.session.commit()
-    break
+    arrayOfTransactionsToBulkInsert.append(newTransaction)
+  db.session.bulk_save_objects(arrayOfTransactionsToBulkInsert)
+  db.session.commit()
   # print(f'HERE ARE ROWSSS: {rowsOfData.head()}')
   # print(f'HERE IS FIIIIILE NAME {file.filename}')
   return ''
