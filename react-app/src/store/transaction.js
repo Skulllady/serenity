@@ -10,17 +10,20 @@ const getTransactions = (transactions) => {
 }
 
 //thunk action
-export const displayTransactions = (id) => async (dispatch) => {
-  const response = await fetch(`/api/accounts/${id}/transactions`)
-  console.log("RESPOSE OKAY?", response)
+export const displayTransactions = (id) => {
   // debugger
-  if (response.ok) {
-    const data = await response.json();
-    // console.log("DATA", data)
+  return async (dispatch) => {
     // debugger
-    dispatch(getTransactions(data.transactions))
+    const response = await fetch(`/api/accounts/${id}/transactions`)
+    console.log("RESPOSE OKAY?", response)
+    if (response.ok) {
+      const data = await response.json();
+      // console.log("DATA", data)
+      dispatch(getTransactions(data.transactions))
+    }
   }
 }
+
 
 const initialState = {
   transactions: []
@@ -31,7 +34,6 @@ export default function transactionReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TRANSACTIONS:
       const nextState = {}
-      // debugger
       action.transactions.forEach(transaction => {
         nextState[transaction.id] = transaction
       })
@@ -39,7 +41,7 @@ export default function transactionReducer(state = initialState, action) {
         ...state,
         ...nextState,
         transactions: action.transactions
-      }
+      };
     default:
       return state;
   }

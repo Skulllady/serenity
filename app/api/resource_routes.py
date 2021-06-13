@@ -9,10 +9,10 @@ import pandas as pd
 """----------------Below this line is ACCOUNTS Functionality---------------"""
 """------------------------------------------------------------------------"""
 
-account_routes = Blueprint('accounts', __name__)
+resource_routes = Blueprint('accounts', __name__)
 
 # LOAD ALL ACCOUNTS TO SIDEBAR
-@account_routes.route('/')
+@resource_routes.route('/')
 @login_required
 def accounts():
   accounts = Account.query.all()
@@ -20,7 +20,7 @@ def accounts():
 
 
 # CREATE A NEW ACCOUNT
-@account_routes.route('/', methods=['POST'])
+@resource_routes.route('/', methods=['POST'])
 @login_required
 def create_account():
   form = AccountForm()
@@ -39,7 +39,7 @@ def create_account():
 
 
 # UPDATE EXISTING ACCOUNT
-@account_routes.route('/<int:id>/transactions', methods=['PUT'])
+@resource_routes.route('/<int:id>/transactions', methods=['PUT'])
 @login_required
 def update_account(id):
   form = AccountForm()
@@ -63,7 +63,7 @@ def update_account(id):
 
 # LOAD ALL TRANSACTIONS FOR SELECTED ACCOUNT
 # TODO: Do not allow user to access other users' transactions
-@account_routes.route('/<int:id>/transactions')
+@resource_routes.route('/<int:id>/transactions')
 @login_required
 def account_transactions(id):
   transactions = Transaction.query.filter(Transaction.account_id == id)
@@ -72,18 +72,18 @@ def account_transactions(id):
 
 
 # UPLOAD TRANSACTIONS FOR SELECTED ACCOUNT
-@account_routes.route('/<int:id>/transactions/upload', methods=['POST'])
+@resource_routes.route('/<int:id>/transactions/upload', methods=['POST'])
 @login_required
 def account_transactions_upload(id):
   file = request.files['file']
-  rowsOfData = pd.read_csv(file, sep = ",", header = None, names = ['Date','Amount $USD','Transaction'])
+  rowsOfData = pd.read_csv(file, sep = ",", header = None, names = ['Date','Transaction','Amount $USD'])
   arrayOfTransactionsToBulkInsert = []
   for index, row in rowsOfData.iterrows():
     newTransaction = Transaction(
       date = datetime.strptime(row['Date'], '%m/%d/%Y').date(),
-      amount = row['Amount $USD'],
       transaction = row['Transaction'],
-      account_id = id,
+      amount = row['Amount $USD'],
+      account_id = id
     )
     arrayOfTransactionsToBulkInsert.append(newTransaction)
   db.session.bulk_save_objects(arrayOfTransactionsToBulkInsert)
@@ -91,3 +91,7 @@ def account_transactions_upload(id):
   # print(f'HERE ARE ROWSSS: {rowsOfData.head()}')
   # print(f'HERE IS FIIIIILE NAME {file.filename}')
   return ''
+
+"""------------------------------------------------------------------------"""
+"""--------------Below this line is CATEGORIES Functionality---------------"""
+"""------------------------------------------------------------------------"""
