@@ -31,7 +31,7 @@ So ask yourself, are you financially healthy? 💳
 
 ### Technologies
 - [chart.js](https://www.chartjs.org/)
-- [pandas.pydata]{https://pandas.pydata.org/pandas-docs/stable/index.html}
+- [pandas.pydata](https://pandas.pydata.org/pandas-docs/stable/index.html)
 
 ### Future Implementations
   - Users are able to sortby transaction column
