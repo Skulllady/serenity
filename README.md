@@ -15,12 +15,29 @@ So ask yourself, are you financially healthy? 💳
 
 ### Key Features
 * Accounts
+    - Users can view, create, update and delete an account
 * Transactions
+    - Users can view transactions for each account
+    - Users can upload csv files with transactions
+    - Users can update the category on a transaction
 * Categories
+    - Users can view account summary in the form of charts and tables based on category totals
+
+### Backend
+ - Python, SQLAlchemy, PostgreSQL, Docker, Flask, WTForms, Python Pandas
+
+### Frontend
+  - React.js, Redux, CSS, Javascript, Material UI Icons
 
 ### Technologies
-- [material-ui](https://material-ui.com/)
 - [chart.js](https://www.chartjs.org/)
+- [pandas.pydata]{https://pandas.pydata.org/pandas-docs/stable/index.html}
+
+### Future Implementations
+  - Users are able to sortby transaction column
+  - Users are able to search for a transaction
+  - Users are able to view personalised forecasts of their expenses
+  - Users have access to more visualisation options
 
 ### Special Thanks
 - Calm FishingBoat Video by Kristian Aleksandrov from Pexels
