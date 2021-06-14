@@ -23,6 +23,9 @@ So ask yourself, are you financially healthy? 💳
 * Categories
     - Users can view account summary in the form of charts and tables based on category totals
 
+### Dashboard Snippet
+![Dashboard](https://github.com/Skulllady/serenity/blob/main/react-app/src/images/dashboard/dashboard.PNG)
+
 ### Backend
  - Python, SQLAlchemy, PostgreSQL, Docker, Flask, WTForms, Python Pandas
 
