@@ -59,7 +59,7 @@ function Piechart() {
       <Doughnut
         data={data}
         id="piechart"
-        options={{ maintainAspectRatio: false }}
+        options={{ maintainAspectRatio: true, plugins: { legend: { position: "left" } } }}
       />
     </>
 

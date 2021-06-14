@@ -42,13 +42,3 @@ function Table() {
 }
 
 export default Table;
-
-
-/*
-            <tr><td>Mortgage/Rent</td><td>$1200</td></tr>
-            <tr><td>Bills</td><td>$198.63</td></tr>
-            <tr><td>Groceries</td><td>$650.92</td></tr>
-            <tr><td>Cash/ATM</td><td>$0</td></tr>
-            <tr><td>Eating Out</td><td>$155.89</td></tr>
-            <tr><td>Shopping</td><td>$189.10</td></tr>
-*/
