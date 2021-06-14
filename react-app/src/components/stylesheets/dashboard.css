@@ -10,8 +10,8 @@
 
 .sidebar{
   /* border: 1px solid #0c68d1; */
-  background-color: rgb(243, 243, 243);
-  grid-column:1/3;
+  /* background-color: rgb(243, 243, 243); */
+  grid-column:2/3;
   grid-row:1/4;
   padding: 1em;
 }
@@ -53,7 +53,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-select{
+.table_container select{
   width: 1.5em;
   margin: 5px;
   color: #1cacd8;
@@ -61,6 +61,10 @@ select{
 
 a{
   text-decoration: none;
+}
+
+a:visited{
+  color: inherit;
 }
 
 
@@ -84,4 +88,69 @@ input[type="file"] {
 
 #upload_container{
   display:flex;
+}
+
+.account{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(219, 216, 216);
+}
+h1 + .account{
+  border-top: 1px solid rgb(219, 216, 216);
+}
+
+.material-ui-icon{
+  border:1px solid rgb(179, 176, 176);
+  padding:3px;
+  border-radius: 5px;
+}
+
+.material-ui-icon:hover{
+  background-color: rgb(243, 240, 240);
+}
+
+.create-account-container{
+  padding-top:30px;
+}
+
+.create-account-container .material-ui-icon{
+  margin-right: 10px;
+}
+
+.create-account-container label,
+.account label{
+display: block;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.create-account-container button,
+.account button{
+  float: right;
+  margin-top: 10px;
+}
+
+.create-account-container input,
+.account input,
+.create-account-container select,
+.account select{
+  margin-left: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  color: rgb(87, 87, 87);
+}
+
+.cancel{
+  color: rgb(65, 158, 158);
+  text-decoration: underline;
+  padding-top: 10px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.create-account-container form,
+.account form{
+  margin-bottom: 10px;
 }

@@ -47,46 +47,45 @@ const CreateAccountForm = () => {
   return (
     <form onSubmit={createAccountOnSubmit}>
 
-      <label>Account Number</label>
-      <input
-        placeholder="enter account number"
-        onChange={updateAccountNumber}
-        value={accountNumber}
-      ></input>
+      <label>Account Number
+        <input
+          placeholder="enter account number"
+          onChange={updateAccountNumber}
+          value={accountNumber}
+        ></input></label>
 
-      <label>Account Name</label>
-      <input
-        placeholder="enter account name"
-        onChange={updateAccountName}
-        value={accountName}
-      ></input>
+      <label>Account Name
+        <input
+          placeholder="enter account name"
+          onChange={updateAccountName}
+          value={accountName}
+        ></input></label>
 
-      <label>Account Type</label>
-      <div>
+      <label>Account Type
+
         <select onChange={(e) => setAccountType(e.target.value)}>
           <option value="">---</option>
           <option value="Checking Account">Checking Account</option>
           <option value="Savings Account">Savings Account</option>
           <option value="Loan Account">Loan Account</option>
           <option value="Investment Account">Investment Account</option>
-        </select>
-      </div>
+        </select></label>
 
-      <label>Institution</label>
-      <input
-        placeholder="enter financial institution"
-        onChange={updateInstitution}
-        value={institution}
-      ></input>
+      <label>Institution
+        <input
+          placeholder="enter financial institution"
+          onChange={updateInstitution}
+          value={institution}
+        ></input></label>
 
-      <label>Current Balance: $</label>
-      <input
-        placeholder="enter account balance"
-        onChange={updateBalance}
-        value={balance}
-      ></input>
+      <label>Current Balance: $
+        <input
+          placeholder="enter account balance"
+          onChange={updateBalance}
+          value={balance}
+        ></input></label>
 
-      <button type="submit">Create Account</button>
+      <button type="submit" style={{ float: "right" }}>Create Account</button>
     </form>
   )
 }

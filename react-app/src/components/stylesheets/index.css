@@ -8,15 +8,23 @@ body{
 
 ::placeholder{
   font-family: 'Quicksand', sans-serif;
+  color: rgb(161, 159, 159);
 }
 
 button{
+  font-family: 'Quicksand', sans-serif;
+  font-weight:bold ;
   background: white;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 16px;
   min-width: 150px;
   padding: 10px;
-  color: rgb(67, 116, 116);
+  border:1px solid rgb(179, 176, 176);
+  border-radius: 5px;
+}
+
+button:hover{
+  background-color: rgb(243, 240, 240);
 }
 
 .errors{
@@ -32,6 +40,17 @@ button{
 
 .secondary-heading{
   font-size:35px;
-  font-weight: 500;
   font-weight: 1000;
+}
+
+.tertiary-heading{
+  font-size:20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.body-text{
+  font-size:16px;
+  font-weight: 500;
+  line-height: 2;
 }

@@ -2,6 +2,7 @@ from flask_login import login_required, current_user
 from flask import Blueprint, request
 from app.models import db, User, Account, Transaction
 from app.forms.account_form import AccountForm
+from app.forms.transaction_form import TransactionForm
 from datetime import datetime
 import pandas as pd
 
@@ -92,6 +93,15 @@ def account_transactions_upload(id):
   # print(f'HERE IS FIIIIILE NAME {file.filename}')
   return ''
 
-"""------------------------------------------------------------------------"""
-"""--------------Below this line is CATEGORIES Functionality---------------"""
-"""------------------------------------------------------------------------"""
+
+# UPDATE CATEGORY ON TRANSACTION
+@resource_routes.route('/<int:accountId>/transactions/<int:id>', methods=['PUT'])
+@login_required
+def update_transaction(accountId, id):
+  form = TransactionForm()
+  transactionToUpdate = Transaction.query.get(id)
+  transactionToUpdate.category_id = form.data['categoryId']
+
+  db.session.add(transactionToUpdate)
+  db.session.commit()
+  return transactionToUpdate.to_dict()

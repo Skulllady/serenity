@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { updateAccount, displayAccounts } from "../../store/account";
+import { updateAccount } from "../../store/account";
 
 
 const UpdateAccountForm = () => {
@@ -52,42 +52,40 @@ const UpdateAccountForm = () => {
   return (
     <form onSubmit={updateAccountOnSubmit}>
 
-      <label>Account Number</label>
-      <input
-        onChange={updateAccountNumber}
-        value={accountNumber}
-      ></input>
+      <label>Account Number
+        <input
+          onChange={updateAccountNumber}
+          value={accountNumber}
+        ></input></label>
 
-      <label>Account Name</label>
-      <input
-        onChange={updateAccountName}
-        value={accountName}
-      ></input>
+      <label>Account Name
+        <input
+          onChange={updateAccountName}
+          value={accountName}
+        ></input></label>
 
-      <label>Account Type</label>
-      <div>
-        <select onChange={(e) => setAccountType(e.target.value)}>
+      <label>Account Type
+        <select value={accountType} onChange={(e) => setAccountType(e.target.value)}>
           <option value="">---</option>
           <option value="Checking Account">Checking Account</option>
           <option value="Savings Account">Savings Account</option>
           <option value="Loan Account">Loan Account</option>
           <option value="Investment Account">Investment Account</option>
-        </select>
-      </div>
+        </select></label>
 
-      <label>Institution</label>
-      <input
-        onChange={updateInstitution}
-        value={institution}
-      ></input>
+      <label>Institution
+        <input
+          onChange={updateInstitution}
+          value={institution}
+        ></input></label>
 
-      <label>Current Balance: $</label>
-      <input
-        onChange={updateBalance}
-        value={balance}
-      ></input>
+      <label>Current Balance: $
+        <input
+          onChange={updateBalance}
+          value={balance}
+        ></input></label>
 
-      <button type="submit">Update Account</button>
+      <button className="cursor-pointer" type="submit">Update Account</button>
     </form>
   )
 }
