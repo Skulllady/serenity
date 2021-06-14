@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 import NavBar from "../NavBar";
 import Footer from '../Footer';
 import { displayAccounts } from "../../store/account.js";
@@ -10,8 +10,9 @@ import Piechart from "../overview/Piechart"
 import Table from "../overview/Table"
 import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-import CancelPresentationRoundedIcon from '@material-ui/icons/CancelPresentationRounded';
+import { deleteAccount } from '../../store/account';
 import CreateAccountForm from "./CreateAccountForm"
 import EditAccountForm from "./EditAccountForm"
 
@@ -20,6 +21,7 @@ function LoadAccounts() {
   const [showNewAccountForm, setShowNewAccountForm] = useState(false)
   const [showEditAccountForm, setShowEditAccountForm] = useState(false)
   const { accountId } = useParams();
+  const history = useHistory();
   const account = useSelector(state => {
     return state.account
   })
@@ -28,6 +30,11 @@ function LoadAccounts() {
     dispatch(displayAccounts());
   }, [dispatch]);
 
+  const removeAccount = async (e, accountId) => {
+    e.preventDefault();
+    await dispatch(deleteAccount(accountId))
+    history.push('/')
+  }
   return (
     <>
       <NavBar />
@@ -40,6 +47,7 @@ function LoadAccounts() {
                 <div className="tertiary-heading" style={{ float: "right" }}>${account.balance}</div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
                   <div className="tertiary-heading"> {account.account_type}</div>
+                  <DeleteIcon className="material-ui-icon" style={{ float: "right", "margin-left": "5px" }} onClick={(e) => removeAccount(e, account.id)} />
                   <div hidden={showEditAccountForm === account.id} style={{ float: "right" }}>
                     <div
                       onClick={() => setShowEditAccountForm(account.id)}

@@ -11,16 +11,17 @@ export default function UploadTransactions() {
   const { accountId } = useParams();
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState();
-  const [isUploadConfirmed, setIsUploadConfirmed] = useState(false);
+  const [isFileChosen, setIsFileChosen] = useState(false);
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
-    setIsUploadConfirmed(true);
+    setIsFileChosen(true);
   };
 
   const fileSubmission = async (e) => {
     e.preventDefault();
-    await uploadFile()
+    await uploadFile();
+    setIsFileChosen(false);
     // debugger
     const action = displayTransactions(accountId)
     dispatch(action)
@@ -45,7 +46,7 @@ export default function UploadTransactions() {
         <input type="file" accept=".csv" onChange={changeHandler} />
         <PublishIcon className="material-ui-icon" />
       </label>
-      {isUploadConfirmed && (
+      {isFileChosen && (
         <div>
           <p>Filename: {selectedFile.name}</p>
           <p>Size in bytes: {selectedFile.size}</p>

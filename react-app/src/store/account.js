@@ -2,6 +2,7 @@
 const GET_ACCOUNTS = "accounts/GET_ACCOUNTS"
 const POST_ACCOUNT = "accounts/POST_ACCOUNT"
 const PUT_ACCOUNT = "accounts/PUT_ACCOUNT"
+const DELETE_ACCOUNT = "accounts/DELETE_ACCOUNT"
 
 //action creator
 const getAccounts = (accounts) => {
@@ -22,6 +23,13 @@ const putAccount = (payload) => {
   return {
     type: PUT_ACCOUNT,
     payload
+  }
+}
+
+const removeAccount = (accountId) => {
+  return {
+    type: DELETE_ACCOUNT,
+    accountId
   }
 }
 
@@ -64,6 +72,15 @@ export const updateAccount = (payload) => async dispatch => {
   }
 }
 
+export const deleteAccount = (accountId) => async dispatch => {
+  const response = await fetch(`/api/accounts/${accountId}`, {
+    method: "DELETE"
+  })
+  if (response.ok) {
+    dispatch(removeAccount(accountId));
+  }
+}
+
 
 
 const initialState = {
@@ -77,6 +94,7 @@ const initialState = {
 
 //reducer
 export default function accountReducer(state = initialState, action) {
+  let accountId;
   switch (action.type) {
 
     case GET_ACCOUNTS:
@@ -107,7 +125,7 @@ export default function accountReducer(state = initialState, action) {
 
     case PUT_ACCOUNT:
       const updatedAccount = action.payload
-      let accountId = updatedAccount.id
+      accountId = updatedAccount.id
       let accountToEdit = (eachAccount) => eachAccount.id === accountId
       let index = state.list.findIndex(accountToEdit)
       return {
@@ -116,6 +134,16 @@ export default function accountReducer(state = initialState, action) {
         list: [...state.list.slice(0, index), updatedAccount, ...state.list.slice(index + 1)]
       };
 
+    case DELETE_ACCOUNT:
+      accountId = action.accountId
+      let accountToDelete = (eachAccount) => eachAccount.id === accountId
+      let indexOfAccountToDelete = state.list.findIndex(accountToDelete)
+      let newState = {
+        ...state,
+        list: [...state.list.slice(0, indexOfAccountToDelete), ...state.list.slice(indexOfAccountToDelete + 1)]
+      };
+      delete newState[accountId];
+      return newState;
 
     default:
       return state;
