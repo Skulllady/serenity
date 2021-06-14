@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { displayTransactions } from "../../store/transaction";
+import { displayTransactions, updateTransactions } from "../../store/transaction";
 import UploadTransactions from "./UploadTransactions";
 import "../stylesheets/dashboard.css"
 import "../stylesheets/index.css"
@@ -19,20 +19,43 @@ function Transaction() {
     dispatch(displayTransactions(accountId))
   }, [dispatch, accountId])
 
-  let categorySet = new Set();
-  transactionList.transactions.map((transaction) => {
-    if (transaction.category_name && !(transaction.category_name in categorySet)) {
-      categorySet.add(transaction.category_name);
+  //TODO use category model instead of hardcoding when users are allowed to add and delete categories
+  // let categorySet = new Set();
+  // transactionList.transactions.map((transaction) => {
+  //   if (transaction.category_name && !(transaction.category_name in categorySet)) {
+  //     categorySet.add(transaction.category_name);
+  //   }
+  // })
+
+  let categories = [
+    { id: 1, categoryName: "Rent/Mortgage" },
+    { id: 2, categoryName: "Bills" },
+    { id: 3, categoryName: "Groceries" },
+    { id: 4, categoryName: "Shopping" },
+    { id: 5, categoryName: "Eating Out" },
+    { id: 6, categoryName: "Medical" },
+    { id: 7, categoryName: "Gym" },
+    { id: 8, categoryName: "Transport" },
+    { id: 9, categoryName: "Entertainment" },
+    { id: 10, categoryName: "Subscription" },
+    { id: 11, categoryName: "Bank Fees" },
+    { id: 12, categoryName: "Transfer" },
+    { id: 13, categoryName: "Loan Payment" },
+    { id: 14, categoryName: "Other" },
+    { id: 15, categoryName: "Uncategorized" }
+  ];
+
+  const updateCategoryOnTransaction = (e, transactionId, categoryId) => {
+    e.preventDefault();
+    const payload = {
+      accountId,
+      transactionId,
+      categoryId
     }
-  })
-  let categories = [...categorySet];
-  console.log(categories)
+    dispatch(updateTransactions(payload))
+  }
 
-  //TODO Customise dates on dashboard based on csv info
-  // const convertIntToDate = (int) => {
-  //   int.toString().split('',2);
-
-  // }
+  //TODO Allow user to sort each column
 
   return (
     <>
@@ -54,10 +77,10 @@ function Transaction() {
                   <td>{transaction.transaction}</td>
                   <td className="currency">${transaction.amount}</td>
                   <td>  <label for="categories">{transaction.category_name}</label>
-                    <select name="categories" id="categories">
+                    <select name="categories" id="categories" value={transaction.category_id} onChange={(e) => updateCategoryOnTransaction(e, transaction.id, e.target.value)}>
                       <option>---</option>
                       {categories.map((category) => {
-                        return <option value={category}>{category}</option>
+                        return (<option value={category.id}>{category.categoryName}</option>)
                       })}
                     </select></td>
                 </tr>

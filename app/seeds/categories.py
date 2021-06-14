@@ -3,7 +3,7 @@ from app.models import db, Category
 # Adds a demo user, you can add other users here if you want
 def seed_categories():
 
-    c1 = Category(category="Rent&Mortgage")
+    c1 = Category(category="Rent/Mortgage")
     c2 = Category(category="Bills")
     c3 = Category(category="Groceries")
     c4 = Category(category="Shopping")
@@ -17,6 +17,7 @@ def seed_categories():
     c12 = Category(category="Transfer")
     c13 = Category(category="Loan Payment")
     c14 = Category(category="Other")
+    c15 = Category(category="Uncategorized")
 
     db.session.add(c1)
     db.session.add(c2)
@@ -32,6 +33,7 @@ def seed_categories():
     db.session.add(c12)
     db.session.add(c13)
     db.session.add(c14)
+    db.session.add(c15)
 
 
     db.session.commit()

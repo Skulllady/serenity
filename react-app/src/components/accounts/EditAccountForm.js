@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { updateAccount, displayAccounts } from "../../store/account";
+import { updateAccount } from "../../store/account";
 
 
 const UpdateAccountForm = () => {
