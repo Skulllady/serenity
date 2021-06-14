@@ -9,11 +9,11 @@ const UpdateAccountForm = () => {
   const { accountId } = useParams();
   const account = useSelector(state => state.account[accountId])
 
-  const [accountNumber, setAccountNumber] = useState(account.account_number);
-  const [accountName, setAccountName] = useState(account.account_name);
-  const [accountType, setAccountType] = useState(account.account_type);
-  const [institution, setInstitution] = useState(account.institution);
-  const [balance, setBalance] = useState(account.balance);
+  const [accountNumber, setAccountNumber] = useState(account && account.account_number);
+  const [accountName, setAccountName] = useState(account && account.account_name);
+  const [accountType, setAccountType] = useState(account && account.account_type);
+  const [institution, setInstitution] = useState(account && account.institution);
+  const [balance, setBalance] = useState(account && account.balance);
 
   const dispatch = useDispatch();
 

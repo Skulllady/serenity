@@ -13,7 +13,7 @@ class Account(db.Model):
   balance = db.Column(db.Numeric, nullable = False)
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
   user = db.relationship("User", back_populates="account")
-  transaction = db.relationship("Transaction", back_populates="account")
+  transaction = db.relationship("Transaction", back_populates="account", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {

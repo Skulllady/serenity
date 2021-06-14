@@ -56,6 +56,16 @@ def update_account(id):
   db.session.commit()
   return accountToUpdate.to_dict()
 
+# DELETE AN ACCOUNT FROM SIDEBAR
+@resource_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_account(id):
+  account_to_delete = Account.query.get(id)
+  db.session.delete(account_to_delete)
+  db.session.commit()
+  return ""
+# TODO Do not allow other users to delete accounts that do not belong to them
+
 
 
 """------------------------------------------------------------------------"""
