@@ -36,7 +36,7 @@ function LoadAccounts() {
           <h1>All Accounts</h1>
           {account.list.map((account) => {
             return (
-              <div className="account">
+              <div className="account" key={account.id}>
                 <div className="tertiary-heading" style={{ float: "right" }}>${account.balance}</div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
                   <div className="tertiary-heading"> {account.account_type}</div>

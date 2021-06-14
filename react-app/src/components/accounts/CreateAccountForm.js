@@ -63,7 +63,7 @@ const CreateAccountForm = () => {
 
       <label>Account Type
 
-        <select onChange={(e) => setAccountType(e.target.value)}>
+        <select value="" onChange={(e) => setAccountType(e.target.value)}>
           <option value="">---</option>
           <option value="Checking Account">Checking Account</option>
           <option value="Savings Account">Savings Account</option>

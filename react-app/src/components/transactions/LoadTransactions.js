@@ -63,24 +63,26 @@ function Transaction() {
       <UploadTransactions />
       <div className="table_container">
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Date</th>
               <th>Transaction</th>
               <th>Amount (USD$)</th>
               <th>Category</th>
             </tr>
+          </thead>
+          <tbody>
             {transactionList.transactions.map((transaction) => {
               return (
-                <tr>
+                <tr key={transaction.id}>
                   <td>{transaction.date}</td>
                   <td>{transaction.transaction}</td>
                   <td className="currency">${transaction.amount}</td>
-                  <td>  <label for="categories">{transaction.category_name}</label>
-                    <select name="categories" id="categories" value={transaction.category_id} onChange={(e) => updateCategoryOnTransaction(e, transaction.id, e.target.value)}>
+                  <td>  <label htmlFor="categories">{transaction.category_name}</label>
+                    <select name="categories" id="categories" value={transaction.category_id || ""} onChange={(e) => updateCategoryOnTransaction(e, transaction.id, e.target.value)}>
                       <option>---</option>
                       {categories.map((category) => {
-                        return (<option value={category.id}>{category.categoryName}</option>)
+                        return (<option key={category.id} value={category.id}>{category.categoryName}</option>)
                       })}
                     </select></td>
                 </tr>
