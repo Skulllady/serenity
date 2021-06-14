@@ -41,9 +41,9 @@ export default function UploadTransactions() {
   return (
     <>
       {/* component that has a file input with an upload button */}
-      <label id="upload_label">
+      <label id="upload_label" style={{ float: "right" }}>
         <input type="file" accept=".csv" onChange={changeHandler} />
-        <PublishIcon />
+        <PublishIcon className="material-ui-icon" />
       </label>
       {isUploadConfirmed && (
         <div>

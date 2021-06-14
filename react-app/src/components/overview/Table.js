@@ -29,26 +29,18 @@ function Table() {
 
   return (
     <table>
-      <th>Account Summary</th>
-      {arrayOfCategoryTotalPairs.map((eachCategoryTotalPair) => {
-        return (
-          <>
-            <tr><td>{eachCategoryTotalPair[0]}</td><td>${eachCategoryTotalPair[1].toFixed(2)}</td></tr>
-          </>
-        )
-      })}
+      <thead>
+        <tr><th colspan="2">Account Summary</th></tr>
+      </thead>
+      <tbody>
+        {arrayOfCategoryTotalPairs.map((eachCategoryTotalPair) => {
+          return (
+            <tr key={eachCategoryTotalPair[0]}><td>{eachCategoryTotalPair[0]}</td><td>${eachCategoryTotalPair[1].toFixed(2)}</td></tr>
+          )
+        })}
+      </tbody>
     </table>
   )
 }
 
 export default Table;
-
-
-/*
-            <tr><td>Mortgage/Rent</td><td>$1200</td></tr>
-            <tr><td>Bills</td><td>$198.63</td></tr>
-            <tr><td>Groceries</td><td>$650.92</td></tr>
-            <tr><td>Cash/ATM</td><td>$0</td></tr>
-            <tr><td>Eating Out</td><td>$155.89</td></tr>
-            <tr><td>Shopping</td><td>$189.10</td></tr>
-*/

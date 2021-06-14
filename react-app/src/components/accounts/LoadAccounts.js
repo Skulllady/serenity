@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import NavBar from "../NavBar";
 import Footer from '../Footer';
 import { displayAccounts } from "../../store/account.js";
@@ -19,12 +19,10 @@ function LoadAccounts() {
   const dispatch = useDispatch();
   const [showNewAccountForm, setShowNewAccountForm] = useState(false)
   const [showEditAccountForm, setShowEditAccountForm] = useState(false)
-  const accountsList = useSelector(state => {
-    return state.account.list
+  const { accountId } = useParams();
+  const account = useSelector(state => {
+    return state.account
   })
-  const addAccountButton = (e) => {
-    e.preventDefault()
-  }
 
   useEffect(() => {
     dispatch(displayAccounts());
@@ -36,9 +34,9 @@ function LoadAccounts() {
       <div className="dashboardContainer">
         <div className="sidebar">
           <h1>All Accounts</h1>
-          {accountsList.map((account) => {
+          {account.list.map((account) => {
             return (
-              <div className="account">
+              <div className="account" key={account.id}>
                 <div className="tertiary-heading" style={{ float: "right" }}>${account.balance}</div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
                   <div className="tertiary-heading"> {account.account_type}</div>
@@ -73,14 +71,19 @@ function LoadAccounts() {
             </div>
           </div>
         </div>
-        <div className="overview">
-          <Table />
-        </div>
-        <div className="overview_visual">
-          <Piechart />
-        </div>
-        <div className="transactions_container">
-          <LoadTransactions />
+        <div className="account-container">
+          <h1>{account[accountId] && account[accountId].institution} XXX{account[accountId] && account[accountId].account_number % 1000}</h1>
+          <div className="overview-container">
+            <div className="overview">
+              <Table />
+            </div>
+          </div>
+          <div className="overview_visual">
+            <Piechart />
+          </div>
+          <div className="transactions-container">
+            <LoadTransactions />
+          </div>
         </div>
       </div>
       <Footer />
