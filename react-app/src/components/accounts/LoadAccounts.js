@@ -10,7 +10,7 @@ import Piechart from "../overview/Piechart"
 import Table from "../overview/Table"
 import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
 import EditIcon from '@material-ui/icons/Edit';
-import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import AddIcon from '@material-ui/icons/Add';
 import CancelPresentationRoundedIcon from '@material-ui/icons/CancelPresentationRounded';
 import CreateAccountForm from "./CreateAccountForm"
 import EditAccountForm from "./EditAccountForm"
@@ -35,41 +35,43 @@ function LoadAccounts() {
       <NavBar />
       <div className="dashboardContainer">
         <div className="sidebar">
-          <h2>Accounts</h2>
-          <div hidden={showNewAccountForm}>
-            <div
-              onClick={() => setShowNewAccountForm(true)}
-            ><AddBoxOutlinedIcon /> New Account</div>
-          </div>
-          <div hidden={!showNewAccountForm}>
-            <div
-              onClick={() => setShowNewAccountForm(false)}
-            ><CancelPresentationRoundedIcon /> Cancel</div>
-            <CreateAccountForm />
-          </div>
+          <h1>All Accounts</h1>
           {accountsList.map((account) => {
             return (
-              <div className="accounts">
-                <h3><AccountBalanceTwoToneIcon />  {account.account_type}</h3>
+              <div className="account">
+                <div className="tertiary-heading" style={{ float: "right" }}>${account.balance}</div>
                 <NavLink to={`/accounts/${account.id}/transactions`} exact={true} activeClassName="active">
-                  <h5>{account.institution}</h5>
-                  <h5>XXX{account.account_number % 10000}</h5>
-                  <h5>Balance: USD ${account.balance}</h5>
+                  <div className="tertiary-heading"> {account.account_type}</div>
+                  <div hidden={showEditAccountForm === account.id} style={{ float: "right" }}>
+                    <div
+                      onClick={() => setShowEditAccountForm(account.id)}
+                    ><EditIcon className="material-ui-icon" /></div>
+                  </div>
+                  <div className="body-text">{account.institution} XXX{account.account_number % 10000}</div>
                 </NavLink>
-                <div hidden={showEditAccountForm === account.id}>
-                  <div
-                    onClick={() => setShowEditAccountForm(account.id)}
-                  ><EditIcon /></div>
-                </div>
                 <div hidden={!(showEditAccountForm === account.id)}>
-                  <div
-                    onClick={() => setShowEditAccountForm(false)}
-                  ><CancelPresentationRoundedIcon /> Cancel</div>
                   <EditAccountForm />
+                  <div className="cancel cursor-pointer"
+                    onClick={() => setShowEditAccountForm(false)}
+                  >Cancel</div>
                 </div>
               </div>
             )
           })}
+          <div className="create-account-container">
+            <div hidden={showNewAccountForm}>
+              <div className="cursor-pointer" onClick={() => setShowNewAccountForm(true)}>
+                <AddIcon className="material-ui-icon" style={{ float: "left" }} />
+                <div className="body-text">New Account</div>
+              </div>
+            </div>
+            <div hidden={!showNewAccountForm}>
+              <CreateAccountForm />
+              <div className="cancel cursor-pointer"
+                onClick={() => setShowNewAccountForm(false)}
+              >Cancel</div>
+            </div>
+          </div>
         </div>
         <div className="overview">
           <Table />

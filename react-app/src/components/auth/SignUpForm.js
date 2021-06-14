@@ -19,9 +19,14 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password));
+      if (data.errors) {
+        setErrors(data.errors);
+      }
+    } else {
+      setErrors(["passwords: Passwords need to match."])
     }
-  };
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -50,6 +55,11 @@ const SignUpForm = () => {
           <div className="main-heading">Welcome to Serenity</div>
           <div className="secondary-heading">Sign Up</div>
           <form onSubmit={onSignUp}>
+            <div className="errors">
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
+            </div>
             <div className="form-row">
               <label>User Name</label>
               <input
@@ -58,6 +68,7 @@ const SignUpForm = () => {
                 placeholder="enter username"
                 onChange={updateUsername}
                 value={username}
+                required={true}
               ></input>
             </div>
             <div className="form-row">
@@ -68,6 +79,7 @@ const SignUpForm = () => {
                 placeholder="enter email"
                 onChange={updateEmail}
                 value={email}
+                required={true}
               ></input>
             </div>
             <div className="form-row">
@@ -78,6 +90,7 @@ const SignUpForm = () => {
                 placeholder="enter password"
                 onChange={updatePassword}
                 value={password}
+                required={true}
               ></input>
             </div>
             <div className="form-row">
@@ -99,6 +112,6 @@ const SignUpForm = () => {
       </SplashContainer>
     </>
   );
-};
+}
 
 export default SignUpForm;
