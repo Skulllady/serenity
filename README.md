@@ -41,6 +41,8 @@ So ask yourself, are you financially healthy? 💳
   - Users are able to search for a transaction
   - Users are able to view personalised forecasts of their expenses
   - Users have access to more visualisation options
+  - Users are asked for password validation when editing or deleting an account or transaction
+  - Users can add custom categories
 
 ### Special Thanks
 - Calm FishingBoat Video by Kristian Aleksandrov from Pexels
