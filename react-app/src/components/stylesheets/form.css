@@ -27,6 +27,12 @@
   line-height: 2.4;
 }
 
+.label-input-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+
 .auth-form-btn {
   margin: 0 auto;
   font-size: 20px;

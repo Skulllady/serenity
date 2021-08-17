@@ -51,40 +51,52 @@ const UpdateAccountForm = () => {
 
   return (
     <form onSubmit={updateAccountOnSubmit}>
-
-      <label>Account Number
+      <div class="label-input-container">
+        <label>Account Number</label>
         <input
           onChange={updateAccountNumber}
           value={accountNumber}
-        ></input></label>
-
-      <label>Account Name
-        <input
-          onChange={updateAccountName}
-          value={accountName}
-        ></input></label>
-
-      <label>Account Type
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <div class="label-container">
+          <label>Account Type</label>
+        </div>
         <select value={accountType} onChange={(e) => setAccountType(e.target.value)}>
           <option value="">---</option>
           <option value="Checking Account">Checking Account</option>
           <option value="Savings Account">Savings Account</option>
           <option value="Loan Account">Loan Account</option>
           <option value="Investment Account">Investment Account</option>
-        </select></label>
-
-      <label>Institution
+        </select>
+      </div>
+      <div class="label-input-container">
+        <div class="label-container">
+          <label>Account Name</label>
+        </div>
+        <input
+          onChange={updateAccountName}
+          value={accountName}
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <div class="label-container">
+          <label>Institution</label>
+        </div>
         <input
           onChange={updateInstitution}
           value={institution}
-        ></input></label>
-
-      <label>Current Balance: $
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <div class="label-container">
+          <label>Current Balance: $</label>
+        </div>
         <input
           onChange={updateBalance}
           value={balance}
-        ></input></label>
-
+       ></input>
+      </div>
       <button className="cursor-pointer" type="submit">Update Account</button>
     </form>
   )
