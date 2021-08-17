@@ -1,6 +1,6 @@
-# Welcome to Serenity!
-![Serenity Logo](https://github.com/Skulllady/serenity/blob/main/react-app/src/images/logo/logo_transparent.png)
+<img src="https://github.com/Skulllady/serenity/blob/main/react-app/src/images/logo/logo_transparent.png" alt="drawing" width="400px"/>
 
+Welcome! I am very glad to have you here!
 Serenity is a personal finance app that focuses on financial literacy.
 
 💵 I am a firm believer that personal finance is a life skill and ought to be taught to children in schools. We all know after the GFC of '08, how the lack of financial knowledge can have devastating consequences.
@@ -41,6 +41,8 @@ So ask yourself, are you financially healthy? 💳
   - Users are able to search for a transaction
   - Users are able to view personalised forecasts of their expenses
   - Users have access to more visualisation options
+  - Users are asked for password validation when editing or deleting an account or transaction
+  - Users can add custom categories
 
 ### Special Thanks
 - Calm FishingBoat Video by Kristian Aleksandrov from Pexels
