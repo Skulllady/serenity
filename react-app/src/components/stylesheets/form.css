@@ -34,6 +34,10 @@
     margin-left: 1.5em;
     margin-right: 1em;
   }
+
+  .label-input-container input{
+    width: 137px;
+  }
 }
 
 
