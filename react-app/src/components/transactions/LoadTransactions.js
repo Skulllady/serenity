@@ -78,13 +78,15 @@ function Transaction() {
                   <td>{transaction.date}</td>
                   <td>{transaction.transaction}</td>
                   <td className="currency">${transaction.amount}</td>
-                  <td>  <label htmlFor="categories">{transaction.category_name}</label>
+                  <td>
                     <select name="categories" id="categories" value={transaction.category_id || ""} onChange={(e) => updateCategoryOnTransaction(e, transaction.id, e.target.value)}>
                       <option>---</option>
                       {categories.map((category) => {
                         return (<option key={category.id} value={category.id}>{category.categoryName}</option>)
                       })}
-                    </select></td>
+                    </select>
+                    <label htmlFor="categories">{transaction.category_name}</label>
+                  </td>
                 </tr>
               )
             })}
