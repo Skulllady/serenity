@@ -27,9 +27,13 @@
   line-height: 2.4;
 }
 
-.label-input-container{
-  display: flex;
-  justify-content: space-around;
+@media screen and (min-width: 2047px){
+  .label-input-container{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1.5em;
+    margin-right: 1em;
+  }
 }
 
 
