@@ -46,44 +46,49 @@ const CreateAccountForm = () => {
 
   return (
     <form onSubmit={createAccountOnSubmit}>
-
-      <label>Account Number
+      <div class="label-input-container">
+        <label>Account Number</label>
         <input
           placeholder="enter account number"
           onChange={updateAccountNumber}
           value={accountNumber}
-        ></input></label>
-
-      <label>Account Name
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <label>Account Name</label>
         <input
           placeholder="enter account name"
           onChange={updateAccountName}
           value={accountName}
-        ></input></label>
-
-      <label>Account Type
-
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <label>Account Type</label>
         <select value="" onChange={(e) => setAccountType(e.target.value)}>
           <option value="">---</option>
           <option value="Checking Account">Checking Account</option>
           <option value="Savings Account">Savings Account</option>
           <option value="Loan Account">Loan Account</option>
           <option value="Investment Account">Investment Account</option>
-        </select></label>
+        </select>
+      </div>
 
-      <label>Institution
+      <div class="label-input-container">
+        <label>Institution</label>
         <input
           placeholder="enter financial institution"
           onChange={updateInstitution}
           value={institution}
-        ></input></label>
-
-      <label>Current Balance: $
+        ></input>
+      </div>
+      <div class="label-input-container">
+        <label>Current Balance: $</label>
         <input
           placeholder="enter account balance"
           onChange={updateBalance}
           value={balance}
-        ></input></label>
+        ></input>
+      </div>
 
       <button type="submit" style={{ float: "right" }}>Create Account</button>
     </form>
