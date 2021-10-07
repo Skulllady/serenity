@@ -11,9 +11,9 @@
 
 .nav-items{
   display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:flex-end;
 }
 
 .auth-options{

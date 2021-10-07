@@ -35,8 +35,8 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="nav-items">
-        <div key={account_name}>Welcome to Serenity, {account_name}</div>
         <LogoutButton />
+        <div key={account_name}>Welcome to Serenity, {account_name}</div>
       </div>
     </nav>
   );
