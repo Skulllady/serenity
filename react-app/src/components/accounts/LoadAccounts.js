@@ -80,7 +80,7 @@ function LoadAccounts() {
           </div>
         </div>
         <div className="account-container">
-          <h1>{account[accountId] && account[accountId].institution} XXX{account[accountId] && account[accountId].account_number % 1000}</h1>
+          <h1>{account[accountId] && account[accountId].institution} XXX{account[accountId] && account[accountId].account_number % 10000}</h1>
           <div className="overview-container">
             <div className="overview">
               <Table />
