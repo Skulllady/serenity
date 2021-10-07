@@ -14,12 +14,12 @@ const NavBar = () => {
     return state.account
   })
   let currentAccount;
+  let account_name
   for (let i = 0; i < accounts.list.length; i++) {
-    currentAccount = account.list[i];
-    console.log("ACCOUNNNNNT ID", account.id)
+    currentAccount = accounts.list[i];
+    console.log("ACCOUNNNNNT ID", accounts.id)
     if (currentAccount.id = accountId) {
-      let account_name = currentAccount.account_name;
-      break
+      account_name = currentAccount.account_name;
     }
   }
 
@@ -35,7 +35,7 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="nav-items">
-        <div key={currentAccount.account_name}>Welcome to Serenity, {currentAccount.account_name}</div>
+        <div key={account_name}>Welcome to Serenity, {account_name}</div>
         <LogoutButton />
       </div>
     </nav>
