@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { displayAccounts } from "../store/account.js";
 import LogoutButton from './auth/LogoutButton';
@@ -9,9 +9,19 @@ import "../components/stylesheets/index.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const account = useSelector(state => {
+  const { accountId } = useParams();
+  const accounts = useSelector(state => {
     return state.account
   })
+  let currentAccount;
+  for (let i = 0; i < accounts.list.length; i++) {
+    currentAccount = account.list[i];
+    console.log("ACCOUNNNNNT ID", account.id)
+    if (currentAccount.id = accountId) {
+      let account_name = currentAccount.account_name;
+      break
+    }
+  }
 
   useEffect(() => {
     dispatch(displayAccounts());
@@ -25,16 +35,7 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="nav-items">
-        {account.list.map((account) => {
-          console.log("ACCOUNNNNNT", account)
-          if (true) {
-            let account_name = account.account_name;
-            return (
-              <div key={account_name}>Welcome to Serenity, {account_name}</div>
-            )
-          }
-        })}
-
+        <div key={currentAccount.account_name}>Welcome to Serenity, {currentAccount.account_name}</div>
         <LogoutButton />
       </div>
     </nav>
