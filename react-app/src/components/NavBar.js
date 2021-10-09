@@ -13,15 +13,8 @@ const NavBar = () => {
   const accounts = useSelector(state => {
     return state.account
   })
-  let currentAccount;
-  let account_name
-  for (let i = 0; i < accounts.list.length; i++) {
-    currentAccount = accounts.list[i];
-    console.log("ACCOUNNNNNT ID", accounts.id)
-    if (currentAccount.id = accountId) {
-      account_name = currentAccount.account_name;
-    }
-  }
+  //grab the current account selected
+  let currentAccount = accounts[parseInt(accountId)];
 
   useEffect(() => {
     dispatch(displayAccounts());
@@ -35,8 +28,8 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="nav-items">
+        <div id="welcome_message">Welcome, {currentAccount ? currentAccount.account_name : `User`}</div>
         <LogoutButton />
-        <div key={account_name}>Welcome to Serenity, {account_name}</div>
       </div>
     </nav>
   );
