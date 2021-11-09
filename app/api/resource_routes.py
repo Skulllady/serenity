@@ -82,18 +82,19 @@ def account_transactions(id):
   # sort by user selection on column header and assign sort direction
   sort_by = request.args.get('sort_by')
   sort_direction = request.args.get('sort_direction')
-  # Sort by column
-  if sort_by == "date":
-    column_to_sort = Transaction.date
-  else:
-    raise Exception(f"Sort by parameter {sort_by} not recognized")
-  if sort_direction == "asc":
-    column_to_sort = column_to_sort.asc()
-  elif sort_direction == "desc":
-    column_to_sort = column_to_sort.desc()
-  else:
-    raise Exception(f"Sort direction parameter {sort_direction} not recognized")
-  transactions = transactions.order_by(column_to_sort)
+  if sort_by:
+    # Sort by column
+    if sort_by == "date":
+      column_to_sort = Transaction.date
+    else:
+      raise Exception(f"Sort by parameter {sort_by} not recognized")
+    if sort_direction == "asc":
+      column_to_sort = column_to_sort.asc()
+    elif sort_direction == "desc":
+      column_to_sort = column_to_sort.desc()
+    else:
+      raise Exception(f"Sort direction parameter {sort_direction} not recognized")
+    transactions = transactions.order_by(column_to_sort)
 
   return {"transactions": [transaction.to_dict() for transaction in transactions]}
 
