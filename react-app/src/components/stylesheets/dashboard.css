@@ -97,6 +97,13 @@ input[type="file"] {
 .account:hover{
   border-color: cadetblue;
   color:cadetblue;
+  background-color: rgb(255, 252, 252);
+}
+
+.account:onclick{
+  border-color: cadetblue;
+  color:cadetblue;
+  background-color: rgb(255, 252, 252);
 }
 
 h1 + .account{

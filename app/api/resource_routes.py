@@ -78,6 +78,12 @@ def delete_account(id):
 @login_required
 def account_transactions(id):
   transactions = Transaction.query.filter(Transaction.account_id == id)
+
+  # sort by user selection on column header and assign sort direction
+  sort_by = request.args.get('sort_by')
+  sort_direction = request.args.get('sort_direction')
+  transactions = transactions.order_by(Transaction.date.asc())
+  transactions = transactions.order_by(Transaction.date.desc())
   return {"transactions": [transaction.to_dict() for transaction in transactions]}
 
 
